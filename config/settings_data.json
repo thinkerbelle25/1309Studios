@@ -121,19 +121,6 @@
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "settings": {
-              "text": "Welcome to our store",
-              "color_scheme": "background-1",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
         "settings": {
         }
       },
@@ -142,7 +129,17 @@
         "settings": {
           "logo_width": 90,
           "menu": "main-menu",
-          "margin_bottom": 0
+          "search_menu": "left",
+          "show_search": true,
+          "contact_menu": "left",
+          "show_contact": true,
+          "account_menu": "left",
+          "show_account": true,
+          "cart_menu": "left",
+          "show_cart": true,
+          "margin_bottom": 0,
+          "padding_top": 20,
+          "padding_bottom": 20
         }
       },
       "footer": {
@@ -201,7 +198,10 @@
           "color_scheme": "background-1"
         }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {
