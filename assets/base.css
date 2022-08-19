@@ -2215,6 +2215,29 @@ input[type='checkbox'] {
 }
 
 /* section-header */
+
+/*ECP ADDED CLASSES*/
+.ecp_header_container{display: block;width: 100%;
+  height: fit-content;padding:15px;}
+.ecp_header_grid{display:grid;grid-template-columns: repeat(3,1fr);
+  grid-gap: 25px;}
+.ecp_header_grid >div{
+  text-align: center;
+}
+.ecp_store_logo{max-width: 100%;height: 100%;position: relative;}
+.ecp_header_menu{padding:0;border-top: solid rgba(var(--color-foreground)) 1px;list-style: none;}
+.ecp_menu_items{padding:10px;border-bottom: solid rgba(var(--color-foreground)) 1px;list-style: none;}
+.ecp_menu_items a, .item-search span{text-decoration: none;color: rgba(var(--color-foreground)) ;}
+.storelogo_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-transform: uppercase;
+}
+.storelogo_item {
+  max-width: 50%;
+}
 #shopify-section-header {
   z-index: 3;
   background: transparent;
