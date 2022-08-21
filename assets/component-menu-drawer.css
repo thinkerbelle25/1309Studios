@@ -34,7 +34,7 @@ menu-drawer > details[open] > summary::before {
   visibility: hidden;
   z-index: 3;
   left: 0;
-  top: 100%;
+  top: 0%;
   width: calc(100vw - 4rem);
   padding: 0;
   border-width: 0 var(--drawer-border-width) 0 0;
@@ -49,11 +49,14 @@ menu-drawer > details[open] > summary::before {
     rgba(var(--color-shadow), var(--drawer-shadow-opacity))
   );
 }
+@media only screen and (max-width: 550px){
+  .menu-drawer{width:100%}
+}
 
 .js .menu-drawer {
   height: calc(100vh - 100%);
   height: calc(
-    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
+    var(--viewport-height, 100vh)
   );
 }
 
