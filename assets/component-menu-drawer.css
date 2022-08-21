@@ -101,7 +101,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__navigation {
-  padding: 5.6rem 0;
+  padding: 15px 10px 5.6rem 10px;
 }
 
 .menu-drawer__inner-submenu {
