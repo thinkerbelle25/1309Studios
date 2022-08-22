@@ -454,5 +454,5 @@
 .active_slider {
   background-color: #222;
 }
-.slider_ctrl_container{ text-align: center;z-index: 5;position: absolute;bottom: 10px;display: block;width: 100%;}
+.slider_ctrl_container{ text-align: center;z-index: 2;position: absolute;bottom: 10px;display: block;width: 100%;}
 .image_slider_block{display:none;}

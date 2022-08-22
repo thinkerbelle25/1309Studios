@@ -65,11 +65,16 @@
       var datablock = elem.getAttribute('data-block');
       var datasection = elem.getAttribute('data-section');
       let sliders = document.getElementsByClassName("image_slider_" + datasection);
-
+      
       for (i = 0; i < sliders.length; i++) {
         sliders[i].style.display = "none";
         }
         document.getElementById(datablock).style.display = "block";
+        let dots = document.querySelectorAll('[data-section="'+ datasection +'"]');
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active_slider", "");
+      }
+      elem.classList.add("active_slider");
     });
   });
 </script>

@@ -1,0 +1,97 @@
+{{ 'component-featured-collections.css' | asset_url | stylesheet_tag }}
+<div class="color-background-1 isolate gradient featured-collection-main">
+    <div class="featured-collection-header">
+        <h2 class="headings h1">{{ section.settings.heading }} </h2>
+    </div>
+    <div class="featured-collection-main-container">
+        <div class="featuredCollection1-{{ section.id }} featured-collection-container">
+            <div class="featured-collection-grid">
+            {% if section.settings.collection.all_products_count == 0 or  section.settings.collection.all_products_count == blank %}
+                {% render "featured-collections-placeholders" %}
+            {% else %}
+            {%- for product in section.settings.collection.products limit: 9 -%}
+                <div class="productcard_in_featured-collection">
+                    <a class="ftrd-coll-product" href="{{ product.url }}">
+                    {% unless product.featured_media == blank %}
+                     <img loading="lazy" src="{{ product.featured_media | image_url: width: 533 }}" >
+                    {% endunless %}
+                    {% unless product.featured_media != blank %}
+                    <div>
+                        <div class="placeholder">
+                            <div class="placeholder_svg">
+                                {{ 'image' | placeholder_svg_tag }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endunless %}
+                    <div class="featured-col-product-content">
+                        <h3 class="featuredCollection_productTitle">{{ product.title }}
+                            <br> {{ product.price | money }}
+                        </h3>
+                    </div>
+                </a>
+                </div>
+            {%- endfor -%}
+            {% endif %}
+        </div>
+        </div>
+        {% unless section.settings.collection.all_products_count < 4 %}
+        <div class="collgroup_ctrl_container">
+            <span data-block="0" data-section="{{ section.id }}" class="collgroup_ctrl active_collgroup"></span>
+            <span data-block="1" data-section="{{ section.id }}" class="collgroup_ctrl"></span>
+           {% if section.settings.collection.all_products_count > 6 %}
+           <span data-block="2" data-section="{{ section.id }}" class="collgroup_ctrl"></span>
+           {% endif %}
+        </div>
+        {% endunless %}
+    </div>
+</div>
+<script>
+    const  featured_grp_ctrl = document.querySelectorAll(".collgroup_ctrl");
+    featured_grp_ctrl.forEach(function(elmnt) {
+    elmnt.addEventListener("click", function() {
+      var datablock = elmnt.getAttribute('data-block');
+      var datasection = elmnt.getAttribute('data-section');
+      let collections = document.getElementsByClassName("featuredCollection1-" + datasection);
+      var newposition = (96.8 * datablock);
+   
+    
+      let dots = document.querySelectorAll('[data-section="'+ datasection +'"]');
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active_collgroup", "");
+      }
+      elmnt.classList.add("active_collgroup");
+      collections[0].style.transform = "translate3d(-"+ newposition +"vw, 0px, 0px)";
+    });
+  });
+</script>
+{% schema %}
+{
+    "name": "Featured collection I",
+    "settings": [
+    {
+        "type":"text",
+        "id":"heading",
+        "label":"Header title",
+        "default":"Heading/Title"
+    },
+    {
+        "type":"collection",
+        "id":"collection",
+        "label":"Choose collection"
+    }
+    ],
+    "presets": [
+    {
+        "category":"collection",
+        "name":"Feature collection I"
+    }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
