@@ -1001,6 +1001,14 @@
         }
       }
     },
+    "image-banner-slider": {
+      "name": "Image banner slider",
+      "settings": {
+        "image": {
+          "label": "Image on slider"
+        }
+      }
+    },
     "image-banner": {
       "name": "Image banner",
       "settings": {
