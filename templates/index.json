@@ -8,10 +8,17 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled-8.jpg"
           }
+        },
+        "e27b603e-35d0-49fc-86ea-ca2c2e20a9da": {
+          "type": "heading",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Capture_7N3A0156_db8707ac-2f45-42fd-91f4-cc25619c83de.jpg"
+          }
         }
       },
       "block_order": [
-        "heading"
+        "heading",
+        "e27b603e-35d0-49fc-86ea-ca2c2e20a9da"
       ],
       "settings": {
         "image_overlay_opacity": 40,
