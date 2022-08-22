@@ -61,8 +61,15 @@
   const  dots = document.querySelectorAll(".slider_ctrl");
  
   dots.forEach(function(elem) {
-    elem.addEventListener("click", function(x) {
-      alert('read');
+    elem.addEventListener("click", function() {
+      var datablock = elem.getAttribute('data-block');
+      var datasection = elem.getAttribute('data-section');
+      let sliders = document.getElementsByClassName("image_slider_" + datasection);
+
+      for (i = 0; i < sliders.length; i++) {
+        sliders[i].style.display = "none";
+        }
+        document.getElementById(datablock).style.display = "block";
     });
   });
 </script>
