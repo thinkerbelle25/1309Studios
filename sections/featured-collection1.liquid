@@ -13,7 +13,7 @@
                 <div class="productcard_in_featured-collection">
                     <a class="ftrd-coll-product" href="{{ product.url }}">
                     {% unless product.featured_media == blank %}
-                     <img loading="lazy" src="{{ product.featured_media | image_url: width: 533 }}" >
+                     <img loading="lazy" width="auto" height="auto" src="{{ product.featured_media | image_url: width: 533 }}" >
                     {% endunless %}
                     {% unless product.featured_media != blank %}
                     <div>
@@ -65,33 +65,29 @@
     });
   });
 </script>
+
+
 {% schema %}
 {
-    "name": "Featured collection I",
-    "settings": [
+  "name": "Featured collection I",
+  "settings": [
     {
-        "type":"text",
-        "id":"heading",
-        "label":"Header title",
-        "default":"Heading/Title"
+      "type":"text",
+      "id":"heading",
+      "label":"Header title",
+      "default":"Heading/Title"
     },
     {
-        "type":"collection",
-        "id":"collection",
-        "label":"Choose collection"
+      "type":"collection",
+      "id":"collection",
+      "label":"Choose collection"
     }
-    ],
-    "presets": [
+  ],
+  "presets": [
     {
-        "category":"collection",
-        "name":"Feature collection I"
+      "name": "Featured collection I",
+      "category": "collection"
     }
-    ]
+  ]
 }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

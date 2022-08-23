@@ -126,7 +126,6 @@
             "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
-              "text_alignment": "center",
               "color_scheme": "background-1",
               "link": ""
             }
@@ -141,14 +140,9 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/1309_Logo_Resized_3.png",
           "logo_width": 90,
           "menu": "main-menu",
-          "menu_layout": "menu_layout1",
-          "contact_page_link": "",
-          "margin_bottom": 0,
-          "padding_top": 20,
-          "padding_bottom": 20
+          "margin_bottom": 0
         }
       },
       "footer": {
@@ -207,10 +201,7 @@
           "color_scheme": "background-1"
         }
       }
-    },
-    "content_for_index": [
-
-    ]
+    }
   },
   "presets": {
     "Default": {

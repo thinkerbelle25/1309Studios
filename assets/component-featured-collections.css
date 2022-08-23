@@ -1,109 +1,102 @@
 .featured-collection-main{
-    padding: 0 15px;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  padding: 0 15px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 .featured-collection-main-container{
-   overflow: hidden;
-   width: 100%;
-   position: relative;
-   border-bottom: solid #222 1px;
+ overflow: hidden;
+ width: 100%;
+ position: relative;
+ border-bottom: solid #222 1px;
 }
 .featured-collection-container{
-    transform: translate3d(0px, 0px, 0px);
-    width: max-content;
-    padding: 0;
-    transition-duration: .6s;
-    transition-timing-function: cubic-bezier(.25,0,.25,1);
-    padding-bottom: 25px;
+  transform: translate3d(0px, 0px, 0px);
+  width: max-content;
+  padding: 0;
+  transition-duration: .6s;
+  transition-timing-function: cubic-bezier(.25,0,.25,1);
+  padding-bottom: 25px;
 }
 .featured-collection-grid{
-    grid-gap: 15px;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
+  grid-gap: 15px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
 }
 .featured-collection-grid >div{
-    background: #eee;
-    height: auto;
-    width:calc((100vw / 3.05) - 20px);
-    border: solid #222 1px;
-    position: relative;
-    overflow: hidden;
+  background: #eee;
+  height: auto;
+  width:calc((100vw / 3.05) - 20px);
+  border: solid #222 1px;
+  position: relative;
+  overflow: hidden;
 }
 
 .productcard_in_featured-collection img{
-    max-height: 100%;
-    min-height: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    object-fit: cover;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
 .featured-collection-header{margin-bottom: 10px;border-top: solid #222 1px;}
-.placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  .placeholder_svg {
-    max-width: 100%;
-    min-width: 100%;
-  }
-  .featuredCollection_productTitle{
-    margin:0; padding: 0;
-    padding: 15px 10px;
-  }
-  .featured-col-product-content{
-    display: block;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background: rgb(238, 238, 238, 0.67);
-    max-height: 0%;
-    height: 0;
-    left: 0;
-    transition: 0.3s;
-    border-top: solid #222 1px;
-  }
-  a.ftrd-coll-product:hover .featured-col-product-content{
-    max-height: 50%;
-    height: 50%;
-  }
-  .collgroup_ctrl_container {
-    text-align: center;
-    position: relative;
-    display: block;
-    width: 100%;
+
+.featuredCollection_productTitle{
+  margin:0; padding: 0;
+  padding: 15px 10px;
+}
+.featured-col-product-content{
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgb(238, 238, 238, 0.67);
+  max-height: 0%;
+  height: 0;
+  left: 0;
+  transition: 0.3s;
+  border-top: solid #222 1px;
+  border-bottom: solid #222 1px;
+}
+a.ftrd-coll-product:hover .featured-col-product-content{
+  max-height: 50%;
+  height: 50%;
+}
+.collgroup_ctrl_container {
+  text-align: center;
+  position: relative;
+  display: block;
+  width: 100%;
 }
 
 
 .collgroup_ctrl {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    border: solid #222 1px;
-    transition: background-color 0.6s ease;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  border: solid #222 1px;
+  transition: background-color 0.6s ease;
 }
 .active_collgroup {
-    background-color: rgb(177, 177, 177);
+  background-color: rgb(177, 177, 177);
 }
-  @media only screen and (max-width: 625px){
-    .featured-collection-grid >div{
-            width: calc(78vw - 20px);
-    }
-    .headings{max-width: 35%;padding-top: 10px;}
-    .featured-collection-main-container{overflow-x: scroll;}
-    .featured-collection-main-container::-webkit-scrollbar {
-        width: 0px;
-        background: transparent; /* make scrollbar transparent */
-    }
+@media only screen and (max-width: 625px){
+  .featured-collection-grid >div{
+          width: calc(78vw - 20px);
+  }
+ 
+  .featured-collection-main-container{overflow-x: scroll;}
+  .featured-collection-main-container::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+  }
+  .collgroup_ctrl_container{visibility: hidden;height: 0;}
+  .featured-collection-container{padding-bottom: 0;}
 }
