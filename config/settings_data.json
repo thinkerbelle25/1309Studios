@@ -154,9 +154,10 @@
         "type": "footer",
         "settings": {
           "color_scheme": "background-1",
+          "logo_image": "shopify:\/\/shop_images\/1309_Logo_Resized_3.png",
           "newsletter_enable": true,
-          "newsletter_heading": "Subscribe to our emails",
-          "show_social": true,
+          "newsletter_heading": "Newsletter:",
+          "menu": "",
           "enable_country_selector": false,
           "enable_language_selector": false,
           "payment_enable": true,
