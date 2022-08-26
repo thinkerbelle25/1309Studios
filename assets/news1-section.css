@@ -74,7 +74,7 @@ ul.news2-item-content li h4{
     .news2-item-container{display: grid;grid-gap: 2px;grid-template-columns: 1fr;}
 }
 @media only screen and (max-width: 550px){
-    .news2-section{background: transparent;}
+    .news2-section{background-color: rgba(var(--color-base-background-2));padding-top: 0;}
     .news2-item-container{display: grid;grid-gap: 15px;grid-template-columns: 1fr;}
     .news2-item-container >div{background: #0C0300;}
     .news2-item-container >div div.p{

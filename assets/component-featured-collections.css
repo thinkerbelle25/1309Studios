@@ -95,7 +95,7 @@ a.ftrd-coll-product:hover .featured-col-product-content{
   .featured-collection-main-container{overflow-x: scroll;}
   .featured-collection-main-container::-webkit-scrollbar {
       width: 0px;
-      background: transparent; /* make scrollbar transparent */
+      background: transparent; 
   }
   .collgroup_ctrl_container{visibility: hidden;height: 0;}
   .featured-collection-container{padding-bottom: 0;}

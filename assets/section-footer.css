@@ -1,16 +1,12 @@
-.footer {
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
-}
-
 .footer:not(.color-background-1) {
   border-top: none;
 }
-
+.footer-storelogo-tablet{display: none;}
 .footer__content-top {
   padding-bottom: 5rem;
   display: block;
 }
-
+.footer__mobile-top{display: none;}
 @media screen and (max-width: 749px) {
   .footer .grid {
     display: block;
@@ -39,10 +35,8 @@
     margin-bottom: 0;
   }
 }
-
-.footer__content-bottom {
-  border-top: solid 0.1rem rgba(var(--color-foreground), 0.08);
-  padding-top: 3rem;
+.footer-page-width{
+  margin: 0;padding: 10px;
 }
 
 .footer__content-bottom:only-child {
@@ -368,12 +362,13 @@ noscript .localization-selector.link {
 
 .footer__copyright {
   text-align: center;
-  margin-top: 1.5rem;
+  margin: .5rem;
 }
 
 @media screen and (min-width: 750px) {
   .footer__copyright {
-    text-align: right;
+    text-align: center;
+    line-height: 1.25rem;
   }
 }
 
@@ -513,4 +508,130 @@ noscript .localization-selector.link {
       padding-left: 3rem;
     }
   }
+}
+.footer-blocks-grid{
+  display: grid;
+  grid-template-columns: .6fr 3.7fr 4.3fr;
+  grid-gap: 15px;
+  width: fit-content;
+  margin: 0 auto;
+}
+.footer-newsletter-block{
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 15px;
+}
+.footer-newsletter-block:first-child{
+  max-width: fit-content;
+}
+.footer_field__input{
+  border: none;
+  border-bottom: solid #222 1px;
+  width: 200px;
+  padding-bottom: 3px;
+}
+.footer_field__input:focus-visible{box-shadow: none;outline:none}
+.news-letter-form{display: inline-block !important;}
+.footer-form-fieldname{display: inline-block;   
+   margin-block-start: 0 !important;
+  margin-block-end: 0 !important;}
+  .newsletter-form__button2{
+    width: 5rem;
+    height: fit-content;
+    z-index: 2;
+    border: solid 1px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 15px;
+    margin-top: -15px;
+  }
+  
+  .footer-block__links{
+    margin-top: 10px;
+    display: flex;
+    column-gap: 5%;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: -webkit-fill-available;
+    max-width: 550px;
+}
+
+
+.footer-block__links li a{
+  font-size: calc(var(--font-heading-scale) * 1.3rem);
+  text-decoration: none;
+  color: var(--gradient-base-accent-1);
+}
+
+@media only screen and (max-width: 1123px){
+  .footer-blocks-grid{
+    grid-template-columns: .6fr 3fr 4.3fr;
+  }
+  .footer-block__heading{margin-bottom: 0.5rem;}
+}
+
+@media only screen and (max-width: 1009px){
+  .footer-block__links{column-gap: 2.5%;}
+}
+@media only screen and (max-width: 985px){
+  .newsletter-form__button2{margin-left: 0;}
+  .footer-block__links{max-width: 450px;flex-wrap: wrap;}
+  .footer-blocks-grid{
+    grid-template-columns: .6fr 2.75fr 4fr;
+  }
+  .footer_field__input{width: 165px;}
+ 
+}
+@media only screen and (max-width: 750px){
+  .footer-blocks-grid{grid-template-columns: 1fr;}
+  .footer-storelogo-block{display: none;}
+  .tablet-grid-style{
+    display: grid;grid-template-columns: .4fr 1fr;
+  }
+  .footer-block__links{margin: 0 auto;}
+  .footer-storelogo-tablet{display: block;}
+}
+
+@media only screen and (max-width: 500px){
+  .footer__mobile-top {display: block;background-color: rgba(var(--color-base-background-2));}
+  .footer__mobile-top img{width: fit-content; max-width:95%; display: block;margin: 0px auto;}
+  .tablet-grid-style{display: none;}
+  .footer_field__input{width: 90%;    width: 90%;
+    margin: 0 auto;
+    display: block;
+    border: solid 1px #222;
+    background: transparent; 
+    padding: 10px; margin-bottom: 10px;
+}  
+.footer_field__input::placeholder{text-align: center;}
+.footer-block__heading{    margin: 2rem auto;
+    width: fit-content;
+    display: block;
+    margin-bottom: 1.2rem;}
+.newsletter-form__button2{display: block;margin: 10px auto;    height: 40px;}
+.footer__copyright{    text-align: left;font-size: 10px;line-height: 10px;color: #222;}
+.footer__column--info{padding-left:0 ;padding-right: 0;}
+.footer-blocks-grid{width: 100%;}
+.footer-block__links{
+      display: block;
+      width: 100%;
+      border-top: solid #222 1px;
+    }
+ul.footer-block__links li{
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-bottom: solid #222 1px;
+  padding: 10px;
+} 
+.footer-blocks-grid{grid-gap:0;}
+.footer-page-width{padding: 0 10px;}
+.footer {
+  margin-top: 0 !important;
+}
 }
