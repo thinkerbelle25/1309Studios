@@ -1,0 +1,84 @@
+{{ 'maps.css' | asset_url | stylesheet_tag }}
+<div class="maps_main_container">
+    <div class="maps_header">
+        <h2 class="headings h1">{{ section.settings.header }}</h2>
+    </div>
+    <div class="maps-full-width">
+                  <div class="scrollable-maps">
+                <ul class="maps_rows">
+                    {% for block in section.blocks %}
+                      <li>
+                        <div class="iframe_map">
+                            {{ block.settings.map_embed_code }}
+                        </div> 
+                        <div class="map_text_container">
+                            <div>
+                                <p>{{ block.settings.text }}</p>
+                            </div>
+                            <div>
+                                <p>{{ block.settings.text2 }}</p>
+                            </div>
+                        </div>
+                      </li>
+                    {% endfor %}
+                </ul> 
+        </div>
+    </div>
+</div>
+<script>
+    const scrollContainer = document.querySelector(".maps-full-width");
+    scrollContainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+});
+const scrollmaps = document.querySelector(".map-main-section");
+scrollmaps.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+    });
+</script>
+{% schema %}
+{
+  "name": "Maps",
+  "class": "map-main-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header",
+      "default": "Location"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Map",
+      "type": "code",
+      "settings": [
+        {
+          "type": "html",
+          "id": "map_embed_code",
+          "label": "Embed map code"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Location",
+          "default": "Location"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Text",
+          "default": "6:35PM"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Maps"
+    }
+  ]
+}
+{% endschema %}
+
