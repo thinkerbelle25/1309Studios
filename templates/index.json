@@ -97,12 +97,68 @@
       "settings": {
         "heading": "As seen in"
       }
+    },
+    "16615247090fe63d74": {
+      "type": "maps",
+      "blocks": {
+        "0c2b6d44-5449-4271-97a0-5b374b16f729": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661524551359!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "c27745f9-8529-445c-9529-ccd454854019": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661524551359!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "f5dc5306-c3ec-489b-86e8-77e643e0dc6b": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661524551359!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "f73d7e6e-ce75-4a84-8ba2-d76a87dbe4ae": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661524551359!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "e3264d20-b137-44e9-a817-fdc42243c524": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661524551359!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        }
+      },
+      "block_order": [
+        "0c2b6d44-5449-4271-97a0-5b374b16f729",
+        "c27745f9-8529-445c-9529-ccd454854019",
+        "f5dc5306-c3ec-489b-86e8-77e643e0dc6b",
+        "f73d7e6e-ce75-4a84-8ba2-d76a87dbe4ae",
+        "e3264d20-b137-44e9-a817-fdc42243c524"
+      ],
+      "settings": {
+        "header": "Location"
+      }
     }
   },
   "order": [
     "image_banner",
     "166122512233e34155",
     "1661261402dd000162",
-    "1661261412d1ac25a4"
+    "1661261412d1ac25a4",
+    "16615247090fe63d74"
   ]
 }
