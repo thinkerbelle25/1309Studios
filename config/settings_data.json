@@ -157,7 +157,7 @@
           "logo_image": "shopify:\/\/shop_images\/1309_Logo_Resized_3.png",
           "newsletter_enable": true,
           "newsletter_heading": "Newsletter:",
-          "menu": "",
+          "menu": "footer",
           "enable_country_selector": false,
           "enable_language_selector": false,
           "payment_enable": false,
