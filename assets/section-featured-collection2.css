@@ -198,4 +198,8 @@ min-height:100%;
 @media only screen and (max-width: 500px){
     .fcprod-last-two{grid-gap:5px;}
     .fcp-swiper-container{bottom: 35px;}
+  
+}
+@media only screen and (max-width: 400px){
+    .fcp-swiper-1{right: 5%;}
 }
