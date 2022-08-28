@@ -34,6 +34,13 @@
         "collection": "cosmic-cowboy"
       }
     },
+    "1661713985e95a4e75": {
+      "type": "featured-collection-ii",
+      "settings": {
+        "title": "1309 x Nafsika Skourti",
+        "featured_collection": "isabella"
+      }
+    },
     "1661261402dd000162": {
       "type": "news-I",
       "blocks": {
@@ -102,6 +109,7 @@
   "order": [
     "image_banner",
     "166122512233e34155",
+    "1661713985e95a4e75",
     "1661261402dd000162",
     "1661261412d1ac25a4"
   ]
