@@ -1,0 +1,132 @@
+{{ "section-featured-collection2.css" | asset_url | stylesheet_tag }}
+{% assign fcpids = "" %}
+{% assign grids_products = "" | split: "," %}
+<div class="section-featured-collection-2">
+  <div class="section-fc2-header">
+    <h2 class="h1 headings">{{ section.settings.title }}</h2>
+  </div>
+  {% for product in section.settings.featured_collection.products %}
+       {% assign fcpids = fcpids | append: product.id | append: ", " %} 
+       {% assign handle = product.handle | split: ',' %}
+      {% assign grids_products = grids_products | concat: handle %}  
+  {% endfor %}
+  <div>
+    <div class="outer-featured-collection-grid-2">
+      <div class="featured-collection-base fcb-{{ section.id }}">
+       <div>
+        <div class="fcprod-first-two">
+          <div>
+            <div class="item-aligner">
+              <div class="aligner-item--bottom">
+                <div>
+                  <img class="fcprod-ft-img-1 fcproduct1" loading="lazy" src="{{ all_products[grids_products[0]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                </div>
+                <h5>{{ all_products[grids_products[0]].title }}<br>{{ all_products[grids_products[0]].price | money }}</h5>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="item-aligner">
+              <div class="aligner-item--bottom">
+                <div>
+                  <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[1]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                </div>
+                <h5>{{ all_products[grids_products[1]].title }}<br>{{ all_products[grids_products[1]].price | money }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute-product-1">
+          <div>
+            <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[4]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+            <h5 class="absolute-text">{{ all_products[grids_products[4]].title }}<br>{{ all_products[grids_products[4]].price | money }}</h5>
+          </div>
+        </div>
+        <div class="absolute-product-2">
+          <div>
+            <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[5]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+            <h5 class="absolute-text">{{ all_products[grids_products[5]].title }}<br>{{ all_products[grids_products[5]].price | money }}</h5>
+          </div>
+        </div>
+
+      </div>
+      <div>
+        
+        <div class="fcprod-last-two">
+          <div>
+            <div class="item-aligner">
+              <div class="aligner-item--top">
+                <div>
+                  <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[2]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                </div>
+                <h5>{{ all_products[grids_products[2]].title }}<br>{{ all_products[grids_products[2]].price | money }}</h5>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="item-aligner">
+              <div class="aligner-item--bottom">
+                <div>
+                  <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[3]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                </div>
+                <h5>{{ all_products[grids_products[3]].title }}<br>{{ all_products[grids_products[3]].price | money }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="position: absolute;text-align: center;bottom: 100px;right: 80px;" data-secId="{{ section.id }}-1">
+        <span data-secId="{{ section.id }}" class="featured-swiper featured-swiper-active" onclick="featured2goto(0, '{{ section.id }}')"></span> 
+        <span data-secId="{{ section.id }}" class="featured-swiper" onclick="featured2goto(1, '{{ section.id }}')"></span> 
+      </div>
+      <div style="position: absolute;text-align: center;bottom: 100px;right: -45vw; display: none;" data-secId="{{ section.id }}-2">
+        <span data-secId="{{ section.id }}" class="featured-swiper " onclick="featured2goto(0, '{{ section.id }}')"></span> 
+        <span data-secId="{{ section.id }}" class="featured-swiper featured-swiper-active" onclick="featured2goto(1, '{{ section.id }}')"></span> 
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+  function featured2goto(x,y){
+    let myswiper1 = document.querySelectorAll('[data-secId="'+ y +'-1"]');
+    let myswiper2 = document.querySelectorAll('[data-secId="'+ y +'-2"]');
+    let featuredcollection2 = document.getElementsByClassName("fcb-" + y);
+    
+   if (x < 1){
+    featuredcollection2[0].style.transform = "translate3d(0, 0, 0)";
+    myswiper1[0].style.display ="block";
+    myswiper2[0].style.display ="none";
+   }else{
+    featuredcollection2[0].style.transform = "translate3d(-50vw, 0, 0)";
+    myswiper1[0].style.display ="none";
+    myswiper2[0].style.display ="block";
+   } 
+  }
+</script>
+{% schema %}
+{
+  "name": "Featured collection II",
+  "tag": "section",
+  "class": "featured-collection-container2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Featured Collection II"
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection II",
+      "category": "collection"
+    }
+  ]
+}
+{% endschema %}
