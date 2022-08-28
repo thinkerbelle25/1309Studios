@@ -104,6 +104,61 @@
       "settings": {
         "heading": "As seen in"
       }
+    },
+    "1661714059fe441a52": {
+      "type": "maps",
+      "blocks": {
+        "4721d5c6-33f0-49a1-a929-11b111c7e151": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714133737!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "037dd653-a8ac-4c3a-bff9-1d3f1d9c0da2": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714133737!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "285a8866-5101-4419-8c3a-d5a053daa0f0": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "2177ae86-b949-4302-a755-e687728fa769": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        },
+        "5c526177-3bb1-4097-ae3a-6c8fbc48f8aa": {
+          "type": "code",
+          "settings": {
+            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.1624068485457!2d51.4852515!3d25.2651216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714133737!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+            "text": "Location",
+            "text2": "6:35PM"
+          }
+        }
+      },
+      "block_order": [
+        "4721d5c6-33f0-49a1-a929-11b111c7e151",
+        "037dd653-a8ac-4c3a-bff9-1d3f1d9c0da2",
+        "285a8866-5101-4419-8c3a-d5a053daa0f0",
+        "2177ae86-b949-4302-a755-e687728fa769",
+        "5c526177-3bb1-4097-ae3a-6c8fbc48f8aa"
+      ],
+      "settings": {
+        "header": "Location"
+      }
     }
   },
   "order": [
@@ -111,6 +166,7 @@
     "166122512233e34155",
     "1661713985e95a4e75",
     "1661261402dd000162",
-    "1661261412d1ac25a4"
+    "1661261412d1ac25a4",
+    "1661714059fe441a52"
   ]
 }
