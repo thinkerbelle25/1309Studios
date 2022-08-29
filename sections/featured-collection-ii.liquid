@@ -19,7 +19,11 @@
             <div class="item-aligner">
               <div class="aligner-item--bottom">
                 <div>
-                  <img class="fcprod-ft-img-1 fcproduct1" loading="lazy" src="{{ all_products[grids_products[0]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                  {% if section.settings.featured_collection != blank %}
+                   <img class="fcprod-ft-img-1 fcproduct1" loading="lazy" src="{{ all_products[grids_products[0]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+                  {% endif %}
                 </div>
                 <h5>{{ all_products[grids_products[0]].title }}<br>{{ all_products[grids_products[0]].price | money }}</h5>
               </div>
@@ -29,7 +33,11 @@
             <div class="item-aligner">
               <div class="aligner-item--bottom">
                 <div>
+                  {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[1]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+                  {% endif %}
                 </div>
                 <h5>{{ all_products[grids_products[1]].title }}<br>{{ all_products[grids_products[1]].price | money }}</h5>
               </div>
@@ -38,13 +46,21 @@
         </div>
         <div class="absolute-product-1">
           <div>
+            {% if section.settings.featured_collection != blank %}
             <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[4]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+            {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
             <h5 class="absolute-text">{{ all_products[grids_products[4]].title }}<br>{{ all_products[grids_products[4]].price | money }}</h5>
           </div>
         </div>
         <div class="absolute-product-2">
           <div>
+            {% if section.settings.featured_collection != blank %}
             <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[5]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+            {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+            {% endif %}
             <h5 class="absolute-text">{{ all_products[grids_products[5]].title }}<br>{{ all_products[grids_products[5]].price | money }}</h5>
           </div>
         </div>
@@ -57,7 +73,11 @@
             <div class="item-aligner">
               <div class="aligner-item--top">
                 <div>
+                  {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[2]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag }}
+                    {% endif %}
                 </div>
                 <h5>{{ all_products[grids_products[2]].title }}<br>{{ all_products[grids_products[2]].price | money }}</h5>
               </div>
@@ -67,7 +87,11 @@
             <div class="item-aligner">
               <div class="aligner-item--bottom">
                 <div>
+                  {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[3]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+                  {% endif %}
                 </div>
                 <h5>{{ all_products[grids_products[3]].title }}<br>{{ all_products[grids_products[3]].price | money }}</h5>
               </div>
@@ -114,7 +138,8 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Featured Collection II"
+      "label": "Featured Collection II",
+      "default": "Featured Collection II"
     },
     {
       "type": "collection",
