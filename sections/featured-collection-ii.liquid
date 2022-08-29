@@ -16,7 +16,7 @@
        <div>
         <div class="fcprod-first-two">
           <div>
-            <div class="item-aligner">
+            <div class="item-aligner" onclick="location.href='{{ all_products[grids_products[0]].url }}'">
               <div class="aligner-item--bottom">
                 <div>
                   {% if section.settings.featured_collection != blank %}
@@ -30,8 +30,8 @@
             </div>
           </div>
           <div>
-            <div class="item-aligner">
-              <div class="aligner-item--bottom">
+            <div class="item-aligner" onclick="location.href='{{ all_products[grids_products[1]].url }}'">
+              <div class="aligner-item--bottom" >
                 <div>
                   {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[1]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
@@ -44,8 +44,8 @@
             </div>
           </div>
         </div>
-        <div class="absolute-product-1">
-          <div>
+        <div class="absolute-product-1" >
+          <div  onclick="location.href='{{ all_products[grids_products[4]].url }}'">
             {% if section.settings.featured_collection != blank %}
             <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[4]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
             {% else %}
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="absolute-product-2">
-          <div>
+          <div  onclick="location.href='{{ all_products[grids_products[5]].url }}'">
             {% if section.settings.featured_collection != blank %}
             <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[5]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
             {% else %}
@@ -71,8 +71,8 @@
         <div class="fcprod-last-two">
           <div>
             <div class="item-aligner">
-              <div class="aligner-item--top">
-                <div>
+              <div class="aligner-item--top" onclick="location.href='{{ all_products[grids_products[2]].url }}'">
+                <div >
                   {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[2]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
                   {% else %}
@@ -85,8 +85,8 @@
           </div>
           <div>
             <div class="item-aligner">
-              <div class="aligner-item--bottom">
-                <div>
+              <div class="aligner-item--bottom"  onclick="location.href='{{ all_products[grids_products[3]].url }}'">
+                <div >
                   {% if section.settings.featured_collection != blank %}
                   <img class="fcprod-ft-img-1" loading="lazy" src="{{ all_products[grids_products[3]].featured_media | image_url: width: 600 }}" height="auto" width="600" />
                   {% else %}

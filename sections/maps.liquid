@@ -3,9 +3,21 @@
     <div class="maps_header">
         <h2 class="headings h1">{{ section.settings.header }}</h2>
     </div>
+    {%-liquid
+      if section.blocks.size == 1 
+       assign mapOutergrids = "map1" 
+       assign maprowgrids = "row1"
+      elsif section.blocks.size == 2
+       assign mapOutergrids = "map2" 
+       assign maprowgrids = "row2"
+      else
+        assign mapOutergrids = "maps"
+        assign maprowgrids = "rows"
+      endif -%}
+    
     <div class="maps-full-width">
-                  <div class="scrollable-maps">
-                <ul class="maps_rows">
+                  <div class="scrollable-{{ mapOutergrids }}">
+                <ul class="maps_{{ maprowgrids }}">
                     {% for block in section.blocks %}
                       <li>
                         <div class="iframe_map">
