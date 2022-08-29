@@ -39,6 +39,9 @@ overflow: hidden;}
 .aligner-item--top {
     align-self: flex-start;
   }
+  .aligner-item--top svg, .aligner-item--bottom svg, .absolute-product-1 svg, .absolute-product-2 svg{border: solid 1px;width:100%}
+
+
 .fcprod-last-two{
     display: grid;
     grid-template-columns: 27vw 30vw;
@@ -47,7 +50,6 @@ overflow: hidden;}
 }
 
 .fcprod-last-two{height:100%} 
-
 
 .fcprod-ft-img-1{
 object-fit: cover;
@@ -198,8 +200,9 @@ min-height:100%;
 @media only screen and (max-width: 500px){
     .fcprod-last-two{grid-gap:5px;}
     .fcp-swiper-container{bottom: 35px;}
+    .fcp-swiper-1{right: 3% !important;}
   
 }
 @media only screen and (max-width: 400px){
-    .fcp-swiper-1{right: 5% !important;}
+    .fcp-swiper-1{right: 3% !important;}
 }
