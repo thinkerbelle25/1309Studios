@@ -67,6 +67,62 @@ li div.iframe_map iframe{
     max-height: 100%;
     max-width: 100%;
 }
+/*for 1 item map*/
+.scrollable-map-1{
+    transform: translate3d(0px, 0px, 0px);
+    transition-duration: .6s;
+    transition-timing-function: cubic-bezier(.25,0,.25,1);
+    padding: 0 10px 0 0;
+    width: 100%;
+}
+ul.maps_row1{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    list-style: none;
+    padding:0;
+}
+ul.maps_row1 li{
+    margin:0;padding: 0;
+    position: relative;
+    padding-left: 10px;
+}
+ul.maps_row1 li div.iframe_map{
+    position: relative;
+    overflow: hidden;
+    width: 100%;height: 550px;
+    border:solid #a5a3a3 .8px;
+}
+
+/*end 1 item map*/
+/*for 2 item map*/
+.scrollable-map-2{
+    transform: translate3d(0px, 0px, 0px);
+    transition-duration: .6s;
+    transition-timing-function: cubic-bezier(.25,0,.25,1);
+    padding: 0 10px 0 0;
+    width: 100%;
+}
+ul.maps_row2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    list-style: none;
+    padding:0;
+}
+ul.maps_row2 li{
+    margin:0;padding: 0;
+    position: relative;
+    padding-left: 10px;
+}
+ul.maps_row2 li div.iframe_map{
+    position: relative;
+    overflow: hidden;
+    width: 100%;height: 550px;
+    border:solid #a5a3a3 .8px;
+}
+
+/*end 2 item map*/
 .place-card-large{display:none !important}
 
 @media only screen and (max-width: 900px){
@@ -75,4 +131,14 @@ li div.iframe_map iframe{
         width: 0px;
         background: transparent; 
     }
+}
+@media only screen and (max-width: 750px){
+    ul.maps_row1 li div.iframe_map{
+        width: 100%;height: 450px;
+    }
+    ul.maps_row2{ grid-template-columns: 1fr;}
+    ul.maps_row2 li div.iframe_map{
+        width: 100%;height: 450px;
+    }
+    .scrollable-map-1, .scrollable-map-2{padding-right: 10px;}
 }
