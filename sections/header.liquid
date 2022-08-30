@@ -77,9 +77,15 @@
     }
   }
 </style>
+{% style %}
+ {% unless template.name != "index" %}
+    #shopify-section-header{position:absolute;}
+ {% endunless %}
+{% endstyle %}
 <script>
+  let templatename = '{{ template.name }}';
   let announcencebar = document.querySelectorAll(".announcement-bar").length;
-  if (announcencebar > 0){
+  if (announcencebar > 0 && templatename == 'index'){
     document.getElementById("shopify-section-header").style.marginTop = "37px";
   }
 </script>
@@ -89,6 +95,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
   }
   .section-header {
+
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
   }
 
