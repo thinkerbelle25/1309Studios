@@ -312,7 +312,7 @@ body,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(var(--color-foreground));
   background-color: rgb(var(--color-background));
 }
 
@@ -1735,7 +1735,6 @@ details[open] > .share-button__fallback {
 
 .field:hover.field:after,
 .select:hover.select:after,
-.select__select:hover.select__select:after,
 .customer .field:hover.field:after,
 .customer select:hover.select:after,
 .localization-form__select:hover.localization-form__select:after {
@@ -1745,7 +1744,6 @@ details[open] > .share-button__fallback {
 }
 
 .field__input:focus-visible,
-.select__select:focus-visible,
 .customer .field input:focus-visible,
 .customer select:focus-visible,
 .localization-form__select:focus-visible.localization-form__select:after {
@@ -1755,7 +1753,6 @@ details[open] > .share-button__fallback {
 }
 
 .field__input:focus,
-.select__select:focus,
 .customer .field input:focus,
 .customer select:focus,
 .localization-form__select:focus.localization-form__select:after {
@@ -1978,10 +1975,10 @@ input[type='checkbox'] {
 .quantity {
   color: rgba(var(--color-foreground));
   position: relative;
-  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  width: calc(6.5rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
   display: flex;
   border-radius: var(--inputs-radius);
-  min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+  min-height: calc((var(--inputs-border-width) * 2));
 }
 
 .quantity:after {
@@ -1994,7 +1991,6 @@ input[type='checkbox'] {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
@@ -2029,7 +2025,7 @@ input[type='checkbox'] {
 }
 
 .quantity__button {
-  width: calc(4.5rem / var(--font-body-scale));
+  width: 2rem;
   flex-shrink: 0;
   font-size: 1.8rem;
   border: 0;
@@ -2069,7 +2065,6 @@ input[type='checkbox'] {
 
 .quantity__button:not(:focus-visible):not(.focused),
 .quantity__input:not(:focus-visible):not(.focused) {
-  box-shadow: inherit;
   background-color: inherit;
 }
 
@@ -2252,7 +2247,6 @@ input[type='checkbox'] {
 #shopify-section-header {
   z-index: 3;
   background: transparent;
-  position: absolute;
   width: 100%;
   display: block;
 }
@@ -2984,7 +2978,6 @@ details-disclosure > details {
   }
 
   .field__input:focus,
-  .select__select:focus,
   .customer .field input:focus,
   .customer select:focus,
   .localization-form__select:focus.localization-form__select:after {

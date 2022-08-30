@@ -158,8 +158,7 @@
 .product-form__input {
   flex: 0 0 100%;
   padding: 0;
-  margin: 0 0 1.2rem 0;
-  max-width: 37rem;
+  margin:0;
   min-width: fit-content;
   border: none;
 }
@@ -167,10 +166,6 @@
 variant-radios,
 variant-selects {
   display: block;
-}
-
-.product-form__input--dropdown {
-  margin-bottom: 1.6rem;
 }
 
 .product-form__input .form__label {
@@ -260,9 +255,6 @@ fieldset.product-form__input .form__label {
   box-shadow: none;
 }
 
-.product-form__input .select {
-  max-width: 25rem;
-}
 
 .product-form__submit {
   margin-bottom: 1rem;
@@ -563,7 +555,6 @@ a.product__text {
 .product__media-icon,
 .thumbnail__badge {
   background-color: rgb(var(--color-background));
-  border-radius: 50%;
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
   color: rgb(var(--color-foreground));
   display: flex;
@@ -1149,7 +1140,7 @@ a.product__text {
 }
 
 .thumbnail__badge {
-  color: rgb(var(--color-foreground), 0.6);
+  color: rgb(var(--color-foreground));
   height: 2rem;
   width: 2rem;
   left: auto;
