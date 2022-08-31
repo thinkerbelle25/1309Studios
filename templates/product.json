@@ -17,6 +17,14 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
+        "heading": "Other Products",
+        "related_tag": "isabella",
+        "number_of_products": "6"
+      }
+    },
+    "product-recommendations2": {
+      "type": "product-recommendations",
+      "settings": {
         "heading": "You may also like",
         "related_tag": "isabella",
         "number_of_products": "6"
@@ -25,6 +33,7 @@
   },
   "order": [
     "main",
-    "product-recommendations"
+    "product-recommendations",
+    "product-recommendations2"
   ]
 }
