@@ -1,251 +1,117 @@
-<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
-
-<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+<style>
+  .recom-section-name{
+    font-size: calc(var(--font-heading-scale) * 4rem);
+    margin-bottom: 0;
   }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
+  .product-card {
+    box-sizing: border-box;
+    min-height: 1em;
+    padding-left: 10px;
+    vertical-align: top;
+    width: 25%;
+   
   }
-{%- endstyle -%}
+.product-card img{
+  border: 1px solid #222;
+}
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+  .section-recommendation{border-bottom: #222 1px solid;padding: 0 10px;}
+  .mobile-recos{display: none;}
+   @media only screen and (max-width: 470px){
+    .desktop-recos{display: none;}
+    .mobile-recos{display: inline-block;}
+    .related-products-div{width: 300%;}
+    .recom-section-name{max-width: 80%;}
+    .scroll-recos-on-mobile{max-width: 100%;overflow: scroll;}
+    .scroll-recos-on-mobile::-webkit-scrollbar{width: 0px;background: transparent;}
+   }
+</style>
+<section class="section-recommendation">
+{%-liquid assign counter = 0 
+ assign break_at = section.settings.number_of_products | plus: 0 
+ assign current_product = product -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <product-recommendations class="product-recommendations page-width section-{{ section.id }}-padding isolate" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="product-recommendations__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
-      <ul class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down" role="list">
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating
-            %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </product-recommendations>
+{%- capture related_items -%}
+  {%- for product in collections.all.products -%}
+    {%- unless product.handle == current_product.handle -%}
+
+      {%- if product.tags contains section.settings.related_tag -%}
+        <a href="{{ product.url | within: collection }}" class="product-card">
+          <img class="desktop-recos" src="{{ product.featured_image.src | image_url: width: 150 }}" height="auto" width="auto" loading="lazy">
+          <img class="mobile-recos" src="{{ product.featured_image.src | image_url: width: 280 }}" height="auto" width="auto" loading="lazy">
+        </a>
+
+        {%-liquid assign counter = counter | plus: 1 -%}
+
+        {%- if counter == break_at -%}
+          {%- break -%}
+        {%- endif -%}
+
+      {%- endif -%}
+
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- assign related_items = related_items -%}
+{%- unless related_items == blank -%}
+  <aside>
+    {%- if section.settings.heading -%}
+      <h1 class="recom-section-name">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+<div class="scroll-recos-on-mobile">
+  <div class="related-products-div" style="padding: 10px 0;">
+    {{ related_items }}
+  </div>
 </div>
-
-{% javascript %}
-  class ProductRecommendations extends HTMLElement {
-    constructor() {
-      super();
-
-      const handleIntersection = (entries, observer) => {
-        if (!entries[0].isIntersecting) return;
-        observer.unobserve(this);
-
-        fetch(this.dataset.url)
-          .then(response => response.text())
-          .then(text => {
-            const html = document.createElement('div');
-            html.innerHTML = text;
-            const recommendations = html.querySelector('product-recommendations');
-
-            if (recommendations && recommendations.innerHTML.trim().length) {
-              this.innerHTML = recommendations.innerHTML;
-            }
-
-            if (html.querySelector('.grid__item')) {
-              this.classList.add('product-recommendations--loaded');
-            }
-          })
-          .catch(e => {
-            console.error(e);
-          });
-      }
-
-      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
-    }
-  }
-
-  customElements.define('product-recommendations', ProductRecommendations);
-{% endjavascript %}
-
+  </aside>
+{%- endunless -%}
+</section>
 {% schema %}
 {
-  "name": "t:sections.product-recommendations.name",
-  "tag": "section",
-  "class": "section",
+  "name": "Recommended products",
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:sections.product-recommendations.settings.paragraph__1.content"
-    },
     {
       "type": "text",
       "id": "heading",
-      "default": "You may also like",
-      "label": "t:sections.product-recommendations.settings.heading.label"
+      "label": "Heading",
+      "default": "Recommended products"
+    },
+    {
+      "type": "text",
+      "id": "related_tag",
+      "label": "Tag",
+      "info": "The tag determines which products show as related products."
     },
     {
       "type": "select",
-      "id": "heading_size",
+      "id": "number_of_products",
+      "label": "Number of products to show",
+      "default": "6",
       "options": [
         {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
+          "value": "6",
+          "label": "6"
         },
         {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
+          "value": "8",
+          "label": "8"
         },
         {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.product-recommendations.settings.products_to_show.label"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.product-recommendations.settings.columns_desktop.label"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.product-recommendations.settings.header__2.content"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.product-recommendations.settings.image_ratio.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_secondary_image.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_vendor.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.product-recommendations.settings.show_rating.label",
-      "info": "t:sections.product-recommendations.settings.show_rating.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.product-recommendations.settings.header_mobile.content"
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "default": "2",
-      "label": "t:sections.product-recommendations.settings.columns_mobile.label",
-      "options": [
-        {
-          "value": "1",
-          "label": "t:sections.product-recommendations.settings.columns_mobile.options__1.label"
-        },
-        {
-          "value": "2",
-          "label": "t:sections.product-recommendations.settings.columns_mobile.options__2.label"
+          "value": "12",
+          "label": "12"
         }
       ]
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
     }
   ]
 }

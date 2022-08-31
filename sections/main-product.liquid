@@ -35,12 +35,12 @@
       <div>
         {% for media in product.media %}
          {% if media.media_type == "image" %}
-          <div class="previousnxt_media_img {% unless forloop.index != 3 %} previousnxt_media_active_img {% endunless %}">
+          <div data-mediaIdleft="{{ media.id }}" class="previousnxt_media_img {% unless forloop.index != 3 %} previousnxt_media_active_img {% endunless %}">
             <img loading="lazy" src="{{ media.src | image_url }}" height="auto" width="250" />
           </div>
           <label></label>
           {% else %}
-           <div class="previousnxt_media_img {% unless forloop.index != 3 %} previousnxt_media_active_img {% endunless %}" style="background-color:#e6e4e4;position: relative;">
+           <div data-mediaIdleft="{{ media.id }}" class="previousnxt_media_img {% unless forloop.index != 3 %} previousnxt_media_active_img {% endunless %}" style="background-color:#e6e4e4;position: relative;">
             <img loading="lazy" src="{{ media.preview_image | image_url }}" height="auto" width="250" />
             <div class="product-media-video-ctrl">
               <span class="thumbnail__badge" aria-hidden="true" style="position: relative;">
@@ -54,12 +54,11 @@
       <div>
         {% for media in product.media %}
         {% if media.media_type == "image" %}
-         <div class="previousnxt_media_img {% unless forloop.index != 2 %} previousnxt_media_active_img {% endunless %}">
+         <div data-mediaIdright="{{ media.id }}" class="previousnxt_media_img {% unless forloop.index != 2 %} previousnxt_media_active_img {% endunless %}">
            <img loading="lazy" src="{{ media.src | image_url }}" height="auto" width="250" />
          </div>
-         <label></label>
          {% else %}
-          <div class="previousnxt_media_img {% unless forloop.index != 2 %} previousnxt_media_active_img {% endunless %}" style="background-color:#e6e4e4;position: relative;">
+          <div data-mediaIdright="{{ media.id }}" class="previousnxt_media_img {% unless forloop.index != 2 %} previousnxt_media_active_img {% endunless %}" style="background-color:#e6e4e4;position: relative;">
            <img loading="lazy" src="{{ media.preview_image | image_url }}" height="auto" width="250" />
            <div class="product-media-video-ctrl">
              <span class="thumbnail__badge" aria-hidden="true" style="position: relative;">
@@ -73,48 +72,55 @@
       <div>
       </div>
     </div>
+     <!---MAIN PRODUCT CARD-->
     <div class="product_preview_media">
       {% assign countProductmedia = 0 %}
       {% for media in product.media %}
          {% if media.media_type == "image" %}
-          <div class="media_img {% unless forloop.index != 1 %} media_active_img {% endunless %}">
+          <div id="{{ media.id }}" class="media_img {% unless forloop.index != 1 %} media_active_img {% endunless %}">
             <img loading="lazy" src="{{ media.src | image_url }}" height="auto" width="380" />
           </div>
           {% else %}
-           <div class="media_img {% unless forloop.index != 1 %} media_active_img {% endunless %}" style="background-color:#e6e4e4;position: relative;">
-            <img loading="lazy" src="{{ media.preview_image | image_url }}" height="auto" width="380" />
-            <div class="product-media-video-ctrl">
-              <span class="thumbnail__badge" aria-hidden="true" style="position: relative;">
-                {%- render 'icon-play' -%}
-              </span>
-            </div>
+           <div id="{{ media.id }}" class="media_img {% unless forloop.index != 1 %} media_active_img {% endunless %}" style="position: relative;">
+            {{ media | media_tag: image_size: "380", autoplay: true, loop: true, controls: false, preload: "none" }}
+            {% comment %}<video width="400" controls>
+              <source src="mov_bbb.mp4" type="video/mp4">
+              <source src="mov_bbb.ogg" type="video/ogg">
+              Your browser does not support HTML5 video.
+            </video>
+            {% endcomment %}
            </div>
          {% endif %}
          {% assign countProductmedia = countProductmedia | plus: 1 %}
         {% endfor %}
     </div>
   </div>
+   <!---MAIN PRODUCT CARD END-->
   {% style %}
-  .product_thumbnails{grid-template-columns:repeat({{ countProductmedia }}, 1fr);}
+  .product_thumbnails{grid-template-columns:repeat({{ countProductmedia }}, 100px);}
   {% endstyle %}
-  <div class="product_thumbnails">
-    {% for media in product.media %}
-    {% if media.media_type == "image" %}
-     <div class="">
-       <img loading="lazy" src="{{ media.src | image_url }}" height="auto" width="100" />
-     </div>
-     {% else %}
-      <div class="" style="background-color:#e6e4e4;position: relative;">
-       <img loading="lazy" src="{{ media.preview_image | image_url }}" height="auto" width="100" />
-       <div class="product-media-video-ctrl">
-         <span class="thumbnail__badge" aria-hidden="true" style="position: relative;">
-           {%- render 'icon-play' -%}
-         </span>
+   <!---PRODUCT thumnails-->
+  <div class="product-thumbnails-mobile">
+    <div class="product_thumbnails">
+      {% for media in product.media %}
+      {% if media.media_type == "image" %}
+       <div onclick="checkProductImg('{{ media.id }}','{{ forloop.index }}')" >
+         <img loading="lazy" src="{{ media.src | image_url }}" height="auto" width="100" />
        </div>
-      </div>
-    {% endif %}
-   {% endfor %}
+       {% else %}
+        <div style="background-color:#e6e4e4;position: relative;" onclick="checkProductImg('{{ media.id }}','{{ forloop.index }}')" >
+         <img loading="lazy" src="{{ media.preview_image | image_url }}" height="auto" width="100" />
+         <div class="product-media-video-ctrl">
+           <span class="thumbnail__badge" aria-hidden="true" style="position: relative;">
+             {%- render 'icon-play' -%}
+           </span>
+         </div>
+        </div>
+      {% endif %}
+     {% endfor %}
+    </div>
   </div>
+   <!---PRODUCT thumnails-->
   {%- endif -%}
   <div class="product_details_and_form">
     <div>
@@ -127,7 +133,8 @@
           {{ product.price | money }}
           <!---END OF PRODUCT PRICE-->
         </li>
-        <li style="border-bottom: 1px solid;">
+        <li  
+         {% unless product.has_only_default_variant %}      style="border-bottom: 1px solid;" {% endunless %}>
           <!---VARIANT  SELECTOR-->
           {%- unless product.has_only_default_variant -%}
               <variant-selects
@@ -371,6 +378,32 @@
 
 
   <script>
+    function checkProductImg(media,mynum){
+       let main_product_card = document.getElementById(media);
+       let mediaImg = document.querySelectorAll(".media_img");
+       for (i = 0; i < mediaImg.length; i++){
+        mediaImg[i].classList.remove("media_active_img");
+       }
+       main_product_card.classList.add("media_active_img");
+       var c = mynum;
+       const a = parseInt(c) + 1;
+       let mediaIdRight = document.querySelectorAll("[data-mediaidright]");
+        for (i = 0; i < mediaIdRight.length; i++){
+          mediaIdRight[i].classList.remove("previousnxt_media_active_img");
+       }
+       let mediaIdLeft = document.querySelectorAll("[data-mediaidleft]");
+          for (i = 0; i < mediaIdLeft.length; i++){
+            mediaIdLeft[i].classList.remove("previousnxt_media_active_img");
+        }
+
+       if (c <= mediaImg.length){
+        mediaIdRight[c].classList.add("previousnxt_media_active_img");
+        if (a <= mediaImg.length){
+          mediaIdLeft[a].classList.add("previousnxt_media_active_img");
+          }
+       }
+    }
+
     function openSelectInput(that){
       var variantInput = that.nextElementSibling;
     if (variantInput.style.maxHeight) {
