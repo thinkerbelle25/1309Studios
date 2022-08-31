@@ -632,7 +632,7 @@ ul.footer-block__links li{
   padding: 10px;
 } 
 .footer-blocks-grid{grid-gap:0;}
-.footer-page-width{padding: 0 10px;}
+.footer-page-width{padding: 0 10px;padding-top: 25px;}
 .footer {
   margin-top: 0 !important;
 }

@@ -108,13 +108,14 @@ min-height:100%;
 .absolute-text{margin: 0;}
 .featured-swiper {
     cursor: pointer;
-    height: 15px;
-    width: 45px;
+    height: 18px;
+    width: 18px;
     margin: 0 2px;
     background-color: #bbb;
     display: inline-block;
     transition: background-color 0.6s ease;
     border: none;
+    border-radius: 50%;
   }
   .fcp-swiper-container{
     position: absolute;text-align: center;bottom: 100px;

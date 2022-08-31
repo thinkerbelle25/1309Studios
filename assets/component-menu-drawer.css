@@ -38,7 +38,7 @@ menu-drawer > details[open] > summary::before {
   width: calc(100vw - 4rem);
   padding: 0;
   border-width: 0 var(--drawer-border-width) 0 0;
-  background-color: rgb(var(--color-background));
+  background-color: var(--gradient-base-background-2);
   overflow-x: hidden;
   border-style: solid;
   border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
@@ -254,4 +254,16 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer .list-social__link {
   padding: 1.3rem 1.25rem;
+}
+
+.menu_shop_mbl{display: none;}
+@media only screen and (max-width: 989px){
+  .header--has-menu{background: var(--gradient-base-background-2);}
+  .menu_shop_mbl{list-style: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+      top: 5.5%; cursor: pointer;
+    font-size: 2rem;}
 }

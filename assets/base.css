@@ -2455,7 +2455,6 @@ input[type='checkbox'] {
   width: 100%;
   display: block;
   position: absolute;
-  background: rgba(var(--color-foreground), 0.5);
 }
 
 /* Search */
