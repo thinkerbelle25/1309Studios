@@ -27,6 +27,7 @@
 <noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
 
 <style>
+  .mblmenu,.mblmenu_container{display: none;} 
   header-drawer {
     justify-self: start;
   }
@@ -134,16 +135,44 @@
   <!--mobile area--->
   <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %} {% if template.name == "collection" or template.name == "product" %} header--has-menu_onproduct {% endif %}"  {% if template.name == "collection" %} style="height: 115px;" {% endif %}>
     {% if template.name == "product" %}
-  <ul class="mblmenu">
-    <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
-  </ul>
+    <div class="mblmenu_container">
+      <ul class="mblmenu">
+        <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
+      </ul>
+    </div>
+ 
     {% endif %} 
     {% if template.name == "collection" %}
-    <ul class="mblmenu">
-      <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
-      <li class="menu_shop_mbl" >Filter by</li>
-      <li class="menu_shop_mbl" >Sort by</li>
-    </ul>
+    <div class="mblmenu_container">
+      <ul class="mblmenu">
+        <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
+        <li class="menu_shop_mbl" >Filter by</li>
+        <div class="filtersort_panel">
+          <ul class="filter_row">
+            <li data-filtervalue="new" class="filter_item">
+              New
+            </li>
+            <li data-filtervalue="most-wanted" class="filter_item">
+             Most Wanted
+            </li>
+            <li data-filtervalue="abayas" class="filter_item">
+              Abayas
+             </li>
+             <li data-filtervalue="kaftans" class="filter_item">
+             Kaftans
+             </li>
+             <li data-filtervalue="clothing" class="filter_item">
+              Clothing
+              </li>
+              <li data-filtervalue="accessories" class="filter_item">
+                Accessories
+              </li>
+          </ul>
+        </div>
+        <li class="menu_shop_mbl" >Sort by</li>
+      </ul>
+    </div>
+   
       {% endif %}
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
