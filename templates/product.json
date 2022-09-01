@@ -23,11 +23,8 @@
       }
     },
     "product-recommendations2": {
-      "type": "product-recommendations",
+      "type": "product-recommendations2",
       "settings": {
-        "heading": "You may also like",
-        "related_tag": "isabella",
-        "number_of_products": "6"
       }
     }
   },
