@@ -256,14 +256,16 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.3rem 1.25rem;
 }
 
-.menu_shop_mbl{display: none;}
+
 @media only screen and (max-width: 989px){
   .header--has-menu{background: var(--gradient-base-background-2);}
-  .menu_shop_mbl{list-style: none;
+  ul.mblmenu {
+    list-style: none;
     display: block;
     width: 100%;
     text-align: center;
     position: absolute;
       top: 5.5%; cursor: pointer;
-    font-size: 2rem;}
-}
+    font-size: 2rem; padding: 0 10px;;margin: 0;}
+    .menu_shop_mbl{display: block;    border-bottom: solid 1px;}
+ }

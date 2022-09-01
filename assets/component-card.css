@@ -358,3 +358,9 @@ padding-inline-start: 0;}
 .filter_active{
   border-bottom: 1px solid;font-weight: 600;line-height: 29px;
 }
+@media only screen and (max-width: 989px){
+  .card_content_mobile{display: block;}
+  .card__information{padding-top: 5px;}
+  .card__heading{line-height: 13px;}
+  .card-information span{line-height: 10px;}
+}
