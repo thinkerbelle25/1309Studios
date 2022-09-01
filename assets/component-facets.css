@@ -1110,3 +1110,10 @@ input.mobile-facets__checkbox {
     padding: 0 1rem 1rem;
   }
 }
+
+.facets-container{    
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;}
+ 

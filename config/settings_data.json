@@ -121,13 +121,26 @@
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "text_alignment": "center",
+              "color_scheme": "background-1",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
         "settings": {
         }
       },
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/1309_Logo_Resized_3.png",
           "logo_width": 90,
           "menu": "main-menu",
           "menu_layout": "menu_layout1",

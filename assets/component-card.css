@@ -25,7 +25,7 @@
   position: relative;
   box-sizing: border-box;
   border-radius: var(--border-radius);
-  border: var(--border-width) solid rgba(var(--color-foreground), var(--border-opacity));
+  border: solid 1px;
 }
 
 .card--card:after,
@@ -119,9 +119,9 @@
 }
 
 .card__badge {
-  align-self: flex-end;
-  grid-row-start: 3;
-  justify-self: flex-start;
+  align-self: flex-start;
+  grid-row-start: 1;
+  justify-self: flex-end;
 }
 
 .card__badge.top {
@@ -217,13 +217,14 @@
   .card-wrapper:hover
     .media.media--hover-effect
     > img:first-child:not(:only-child) {
-    opacity: 0;
+    opacity: 1;
   }
 
   .card-wrapper:hover .media.media--hover-effect > img + img {
-    opacity: 1;
+    opacity: 0.4;
     transition: transform var(--duration-long) ease;
     transform: scale(1.03);
+    left: 40% !important;
   }
 
   .underline-links-hover:hover a {
@@ -310,4 +311,50 @@
 
 .card-article-info {
   margin-top: 1rem;
+}
+.card_content_mobile{display: none;}
+.card__content_desktop:hover .card__information_desktop{
+  position: absolute;
+  background: rgb(255,255,255, 0.7);
+  top: 0%;
+  border-top: 1px solid #222;
+  height: 100%;
+  width: 100%;
+  display: block !important;
+}
+.card__heading a{text-decoration: none !important;}
+.filter_container{display: block;width: 100%;padding: 10px;}
+.filter_wrapper{padding-bottom: 5px;display: flex;column-gap: 20px;border-bottom: solid 1px;}
+ul.filter_row{display: flex;flex-wrap: wrap;column-gap: 20px;
+list-style: none;    margin: 0;
+margin-block-start: 0;
+padding-inline-start: 0;}
+.filter-name{   
+   display: flex;
+  height: 100%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.filter_item{cursor: pointer;}
+.sort_container{display: block;width: 100%;padding: 0 10px 10px;}
+.sort_wrapper{display: flex;column-gap: 20px;}
+ul.sort_row{display: flex;flex-wrap: wrap;column-gap: 20px;
+list-style: none;    margin: 0;
+margin-block-start: 0;
+padding-inline-start: 0;}
+.sort-name{   
+   display: flex;
+  height: 100%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+.sort_item{cursor: pointer;}
+.collection{padding: 10px;}
+.sort_active{
+  border-bottom: 1px solid;font-weight: 600;
+} 
+.filter_active{
+  border-bottom: 1px solid;font-weight: 600;line-height: 29px;
 }
