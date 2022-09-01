@@ -133,7 +133,7 @@
 </svg>
 <div class="header-wrapper">
   <!--mobile area--->
-  <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %} {% if template.name == "collection" or template.name == "product" %} header--has-menu_onproduct {% endif %}"  {% if template.name == "collection" %} style="height: 115px;" {% endif %}>
+  <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %} {% if template.name == "collection" or template.name == "product" %} header--has-menu_onproduct {% endif %}"  {% if template.name == "collection" %} style="min-height: 115px;" {% endif %}>
     {% if template.name == "product" %}
     <div class="mblmenu_container">
       <ul class="mblmenu">
