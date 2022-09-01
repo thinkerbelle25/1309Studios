@@ -323,7 +323,7 @@
   display: block !important;
 }
 .card__heading a{text-decoration: none !important;}
-.filter_container{display: block;width: 100%;padding: 10px;}
+.filter_container{display: block;width: 100%;padding: 10px;padding-top: 20px;}
 .filter_wrapper{padding-bottom: 5px;display: flex;column-gap: 20px;border-bottom: solid 1px;}
 ul.filter_row{display: flex;flex-wrap: wrap;column-gap: 20px;
 list-style: none;    margin: 0;

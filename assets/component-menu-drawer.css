@@ -256,16 +256,21 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.3rem 1.25rem;
 }
 
-ul.mblmenu{display: none;}
+
 @media only screen and (max-width: 989px){
   .header--has-menu_onproduct{background: var(--gradient-base-background-2);}
-  ul.mblmenu {
+  .mblmenu {
     list-style: none;
-    display: block;
+    display: block !important;
     width: 100%;
     text-align: center;
     position: absolute;
       top: 5.5%; cursor: pointer;
     font-size: 2rem; padding: 0 10px;;margin: 0;}
     .menu_shop_mbl{display: block;    border-bottom: solid 1px;}
+    .filtersort_panel{ padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;}
+      .mblmenu_container{display: block !important;} 
  }

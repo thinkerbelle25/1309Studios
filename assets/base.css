@@ -2219,7 +2219,7 @@ input[type='checkbox'] {
 
 /*ECP ADDED CLASSES for header*/
 .ecp_header_container{display: block;width: 100%;
-  height: fit-content;padding:15px;}
+  height: fit-content;padding:15px;padding-top: 0;}
 .ecp_header_grid{display:grid;grid-template-columns: repeat(3,1fr);
   grid-gap: 25px;}
 .ecp_header_grid >div{
