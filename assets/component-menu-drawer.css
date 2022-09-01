@@ -256,7 +256,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.3rem 1.25rem;
 }
 
-
+ul.mblmenu{display: none;}
 @media only screen and (max-width: 989px){
   .header--has-menu_onproduct{background: var(--gradient-base-background-2);}
   ul.mblmenu {
