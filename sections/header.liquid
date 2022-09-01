@@ -132,10 +132,19 @@
 </svg>
 <div class="header-wrapper">
   <!--mobile area--->
-  <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %}">
-    {% unless template.name != "product" %}
+  <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %}"  {% if template.name == "collection" %} style="height: 115px;" {% endif %}>
+    {% if template.name == "product" %}
+  <ul class="mblmenu">
     <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
-    {% endunless %}
+  </ul>
+    {% endif %} 
+    {% if template.name == "collection" %}
+    <ul class="mblmenu">
+      <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
+      <li class="menu_shop_mbl" >Filter by</li>
+      <li class="menu_shop_mbl" >Sort by</li>
+    </ul>
+      {% endif %}
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
         <details id="Details-menu-drawer-container" class="menu-drawer-container">

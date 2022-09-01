@@ -174,7 +174,13 @@
 let filteritems = document.querySelectorAll(".filter_item").forEach(filtertag => {
   filtertag.addEventListener('click', event => {
     let newfilter = filtertag.getAttribute("data-filtervalue");
-    document.location.href = '/collections/{{ collection.handle }}/' + newfilter;
+    let currentag= "{{ current_tags }}";
+    if (currentag == newfilter){
+      document.location.href = '/collections/{{ collection.handle }}';
+    }else{
+      document.location.href = '/collections/{{ collection.handle }}/' + newfilter;
+    }
+   
   })
 });
 </script>
@@ -230,25 +236,6 @@ let filteritems = document.querySelectorAll(".filter_item").forEach(filtertag =>
       "id": "show_secondary_image",
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
-      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_quick_add",
-      "default": false,
-      "label": "t:sections.main-collection-product-grid.settings.enable_quick_buy.label"
     },
     {
       "type": "header",
