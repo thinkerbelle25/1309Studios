@@ -1,31 +1,32 @@
-<div
+<product-recommendations 
   class="product-recommendations"
   data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=5"
 >
-  {%- if recommendations.performed and recommendations.products_count > 0 -%}
-    <h2>You may also like</h2>
-
-    <ul>
+  <div style="padding: 10px;">
+    {%- if recommendations.performed and recommendations.products_count > 0 -%}
+  <h1 class="recom-section-name">You may also like</h1>
+  <div class="scroll-recos-on-mobile">
+    <div class="related-products-div" style="padding: 10px 0;">
+ 
       {%- for product in recommendations.products -%}
-        <li class="product">
-          <a href="{{ product.url }}">
+      
+          <a href="{{ product.url }}" class="product-card">
             <img
               loading="lazy"
               class="product__img"
-              src="{{ product.featured_image | image_url: width: 300, height: 300 }}"
+              src="{{ product.featured_image | image_url: width: 155 }}"
               alt="{{ product.featured_image.alt }}"
               height="auto"
               width="auto"
             />
-
-            <p class="product__title">{{ product.title }}</p>
-            <p class="product__price">{{ product.price | money }}</p>
           </a>
-        </li>
+     
       {%- endfor -%}
-    </ul>
+  
+    </div></div>
   {%- endif -%}
-</div>
+  </div>
+</product-recommendations >
 
 {% javascript %}
   const handleIntersection = (entries, observer) => {

@@ -27,10 +27,65 @@
 {%- endstyle -%}
 {%- liquid
   assign sort_by = collection.sort_by 
+
 -%}
+
 <div class="section-{{ section.id }}-padding">
   {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
   {%- if section.settings.enable_filtering -%}
+  {% if section.settings.filter_tag != blank %}
+  {% assign filterTags = section.settings.filter_tag | split: ", " %}
+  <!---mobile filtering-->
+<div class="col-filtering-mbl" id="mobile_filter">
+  <div class="col-fltrng-container" >
+    <div class="col-filtering-items" style="justify-content: space-between;">
+      <p>Filter by:</p> <span class="close_filtering"> {% render "icon-close" %} </span></div>
+    {% for itemtags in filterTags %}
+    <div class="col-filtering-items">
+      <input class="mobileFltrinput" type="radio" id="mbl{{ itemtags | handleize }}" name="{{ itemtags }}" value="{{ itemtags | handleize }}">
+      <label for="{{ itemtags }}">{{ itemtags }}</label>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+<!---mobile sorting-->
+<div class="col-filtering-mbl" id="mobile_sorting">
+  <div class="col-fltrng-container" >
+    <div class="col-filtering-items" style="justify-content: space-between;">
+      <p>Sort by:</p> <span class="close_sorting"> {% render "icon-close" %} </span></div>
+   
+    <div class="col-filtering-items">
+      <input name="price-high-low" class="mobilesrtinput" type="radio" value="5">
+      <label for="price-high-low">Price +/- </label>
+    </div>
+    <div class="col-filtering-items">
+      <input name="price-low-high"  class="mobilesrtinput" type="radio" value="4">
+      <label for="price-low-high">Price -/+ </label>
+    </div>
+    <div class="col-filtering-items">
+      <input name="az" class="mobilesrtinput" type="radio" value="2">
+      <label for="az">A—Z </label>
+    </div>
+    <div class="col-filtering-items">
+      <input name="az"  class="mobilesrtinput" type="radio" value="3">
+      <label for="za">Z—A </label>
+    </div>
+    <div class="col-filtering-items">
+      <input name="new-old" class="mobilesrtinput" type="radio" value="7">
+      <label for="new-old">New 2 Old </label>
+    </div>
+    <div class="col-filtering-items">
+      <input name="old-new" class="mobilesrtinput" type="radio" value="6">
+      <label for="old-new">Old 2 New </label>
+    </div>
+    <div class="col-filtering-items">
+      <input  name="best-selling" class="mobilesrtinput" type="radio" value="1">
+      <label for="best-selling">Best Selling </label>
+    </div>
+  </div>
+</div>
+<!---end of mobile sorting-->
+<h3 id="filter_heading_mbl"></h3>
   <div class="filter_container">
     <div class="filter_wrapper">
       <div>
@@ -38,28 +93,17 @@
       </div>
       <div>
         <ul class="filter_row">
-          <li data-filtervalue="new" class="filter_item">
-            New
+          {% for itemtags in filterTags %}
+          <li data-filtervalue="{{ itemtags | handleize }}" id="{{ itemtags | handleize }}" class="filter_item">
+            {{ itemtags }}
           </li>
-          <li data-filtervalue="most-wanted" class="filter_item">
-           Most Wanted
-          </li>
-          <li data-filtervalue="abayas" class="filter_item">
-            Abayas
-           </li>
-           <li data-filtervalue="kaftans" class="filter_item">
-           Kaftans
-           </li>
-           <li data-filtervalue="clothing" class="filter_item">
-            Clothing
-            </li>
-            <li data-filtervalue="accessories" class="filter_item">
-              Accessories
-            </li>
+        {% endfor %}
         </ul>
       </div>
     </div>
   </div>
+
+  {% endif %}
   {%- endif -%}
   {%- if section.settings.enable_sorting -%}
   <div class="sort_container">
@@ -101,7 +145,7 @@
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
-        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
+        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: 'horizontal' %}
       </aside>
     {%- endif -%}
 
@@ -156,10 +200,21 @@
 </div>
 
 <script>
+  document.querySelector(".close_filtering").addEventListener("click", closeFiltering);
+  document.querySelector(".close_sorting").addEventListener("click", closeFiltering);
+  function closeFiltering(){
+    let fltr_container = document.getElementById("mobile_filter");
+    fltr_container.style.top = "-100%";
+    let srtcontainer = document.getElementById("mobile_sorting");
+    srtcontainer.style.top = "-100%";
+  }
  window.onload = function(){ 
    let filteringtag = "{{ current_tags }}";
-   let filterItem = document.querySelector("[data-filtervalue='"+ filteringtag +"']");
+   let filterItem = document.querySelector("#"+ filteringtag +"");
    filterItem.classList.add("filter_active");
+   let filterItem2 = document.querySelector("#mbl"+ filteringtag +"");
+   filterItem2.checked= true;
+   document.getElementById("filter_heading_mbl").innerHTML = filterItem2.name;
 }
   let sortitems = document.querySelectorAll(".sort_item").forEach(item => {
   item.addEventListener('click', event => {
@@ -171,14 +226,36 @@
    
   })
 });
+let sortitems2 = document.querySelectorAll(".mobilesrtinput").forEach(sortitem => {
+  sortitem.addEventListener('click', event => {
+    let newsort = sortitem.value;
+    let sortselect = document.getElementById("SortBy");
+    let sortsubmit = document.getElementById("submitSort");
+    sortselect.selectedIndex = newsort;
+    sortsubmit.click();
+   
+  })
+});
 let filteritems = document.querySelectorAll(".filter_item").forEach(filtertag => {
   filtertag.addEventListener('click', event => {
     let newfilter = filtertag.getAttribute("data-filtervalue");
-    let currentag= "{{ current_tags }}";
+    let currentag = "{{ current_tags }}";
     if (currentag == newfilter){
       document.location.href = '/collections/{{ collection.handle }}';
     }else{
       document.location.href = '/collections/{{ collection.handle }}/' + newfilter;
+    }
+   
+  })
+});
+let filteritemsmbl = document.querySelectorAll(".mobileFltrinput").forEach(mblfilter => {
+  mblfilter.addEventListener('click', event => {
+    let newfilters = mblfilter.value;
+    let currentag = "{{ current_tags }}";
+    if (currentag == newfilters){
+      document.location.href = '/collections/{{ collection.handle }}';
+    }else{
+      document.location.href = '/collections/{{ collection.handle }}/' + newfilters;
     }
    
   })
@@ -249,25 +326,10 @@ let filteritems = document.querySelectorAll(".filter_item").forEach(filtertag =>
       "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
     },
     {
-      "type": "select",
-      "id": "filter_type",
-      "options": [
-        {
-          "value": "horizontal",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
-        },
-        {
-          "value": "vertical",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
-        },
-        {
-          "value": "drawer",
-          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
-        }
-      ],
-      "default": "horizontal",
-      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
-      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+      "type": "textarea",
+      "id": "filter_tag",
+      "label": "Tag list (use comma to separate tags)",
+      "default": "New, Most Wanted"
     },
     {
       "type": "checkbox",

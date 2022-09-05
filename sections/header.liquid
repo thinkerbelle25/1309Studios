@@ -130,7 +130,7 @@
   <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
-</svg>
+</svg>                                                                     
 <div class="header-wrapper">
   <!--mobile area--->
   <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %} {% if template.name == "collection" or template.name == "product" %} header--has-menu_onproduct {% endif %}"  {% if template.name == "collection" %} style="min-height: 115px;" {% endif %}>
@@ -146,30 +146,10 @@
     <div class="mblmenu_container">
       <ul class="mblmenu">
         <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
-        <li class="menu_shop_mbl" >Filter by</li>
+        <li class="menu_shop_mbl mbl_header_fltr" >Filter by</li>
         <div class="filtersort_panel">
-          <ul class="filter_row">
-            <li data-filtervalue="new" class="filter_item">
-              New
-            </li>
-            <li data-filtervalue="most-wanted" class="filter_item">
-             Most Wanted
-            </li>
-            <li data-filtervalue="abayas" class="filter_item">
-              Abayas
-             </li>
-             <li data-filtervalue="kaftans" class="filter_item">
-             Kaftans
-             </li>
-             <li data-filtervalue="clothing" class="filter_item">
-              Clothing
-              </li>
-              <li data-filtervalue="accessories" class="filter_item">
-                Accessories
-              </li>
-          </ul>
         </div>
-        <li class="menu_shop_mbl" >Sort by</li>
+        <li class="menu_shop_mbl mbl_header_srt" >Sort by</li>
       </ul>
     </div>
    
@@ -633,6 +613,21 @@
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: "accent-1" -%}
 {%- endif -%}
+<script>
+  let filterOnColheader = document.getElementsByClassName("mbl_header_fltr")[0];
+  let sortOnColheader = document.getElementsByClassName("mbl_header_srt")[0];
+  filterOnColheader.addEventListener("click", openFiltersettings);
+  function openFiltersettings(){
+    let fltr_container = document.getElementById("mobile_filter");
+    fltr_container.style.top = "0";
+  }
+  sortOnColheader.addEventListener("click", opensortsettings);
+  function opensortsettings(){
+    let sortcontainer = document.getElementById("mobile_sorting");
+    sortcontainer.style.top = "0";
+  }
+
+</script>
 
 {% javascript %}
   class StickyHeader extends HTMLElement {
