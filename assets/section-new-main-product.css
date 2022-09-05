@@ -32,7 +32,7 @@
 .product_thumbnails >div{min-height: 150px;max-height: 150px;overflow: hidden;border: solid 1px;}
 .product_details_and_form{
      display: grid;grid-template-columns: 1fr .4fr;grid-gap: 10px;
-     padding: 0 10px;
+     margin: 0 10px;border-bottom: #222 1px solid;
 }
 ul.product_selector_forms{list-style: none;padding: 0;border-top: solid 1px;    border-bottom: solid 1px;}
 ul.product_selector_forms li{font-size: 2rem;text-align: center;}
