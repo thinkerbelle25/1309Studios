@@ -21,3 +21,21 @@
   width: 52.5rem;
   height: 52.5rem;
 }
+.page-section-text-block{border-bottom: 1px solid;}
+.page-text-block-text{
+  display: block; margin: 0 auto;
+  width: var(--page-width-txt);
+}
+.page-text-block-header{
+  display: flex;
+  align-items: center;
+  justify-items: flex-start;
+}
+@media only screen and (max-width: 1300px){
+  .page-text-block-text{width: 75%}
+}
+@media only screen and (max-width: 550px){
+  .page-block-tlt{margin-bottom: 0;padding-bottom: 0;}
+  .page-text-block-text{width: 100%}
+  .page-text-block-header >img {display: none;}
+}

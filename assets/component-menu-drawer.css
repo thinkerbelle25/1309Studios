@@ -255,8 +255,8 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer .list-social__link {
   padding: 1.3rem 1.25rem;
 }
-
-
+.item_close_drawer svg{width: 16px;}
+.item_close_drawer{text-align: right;}
 @media only screen and (max-width: 989px){
   .header--has-menu_onproduct{background: var(--gradient-base-background-2);}
   .mblmenu {
