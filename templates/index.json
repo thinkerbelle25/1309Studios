@@ -101,6 +101,28 @@
     },
     "1661261412d1ac25a4": {
       "type": "news-II",
+      "blocks": {
+        "43ed05a9-de2f-4325-8f22-dfaf91f84761": {
+          "type": "news",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link": ""
+          }
+        },
+        "d1cb3f76-ee56-4dfe-96a4-2221e1ee25a3": {
+          "type": "news",
+          "settings": {
+            "title": "",
+            "text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "43ed05a9-de2f-4325-8f22-dfaf91f84761",
+        "d1cb3f76-ee56-4dfe-96a4-2221e1ee25a3"
+      ],
       "settings": {
         "heading": "As seen in"
       }
@@ -115,46 +137,10 @@
             "text": "Location",
             "text2": "6:35PM"
           }
-        },
-        "6c671e92-67a6-4ea8-a8ea-a3a6fba6b759": {
-          "type": "code",
-          "settings": {
-            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.161265563854!2d51.4847173!3d25.26516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714515145!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-            "text": "Location",
-            "text2": "6:35PM"
-          }
-        },
-        "307dbb3b-6f12-434a-bdf3-e130a97f1db8": {
-          "type": "code",
-          "settings": {
-            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.161265563854!2d51.4847173!3d25.26516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714515145!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-            "text": "Location",
-            "text2": "6:35PM"
-          }
-        },
-        "4ec84385-e11f-42dd-9d56-2d52799223e7": {
-          "type": "code",
-          "settings": {
-            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.161265563854!2d51.4847173!3d25.26516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714515145!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-            "text": "Location",
-            "text2": "6:35PM"
-          }
-        },
-        "e0f01b56-89be-472d-84cf-5fb9e0762e60": {
-          "type": "code",
-          "settings": {
-            "map_embed_code": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m14!1m8!1m3!1d3608.161265563854!2d51.4847173!3d25.26516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45dbf5e0a05603%3A0x75fde88d948bc1d9!2s1309%20Studios!5e0!3m2!1sen!2sph!4v1661714515145!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
-            "text": "Location",
-            "text2": "6:35PM"
-          }
         }
       },
       "block_order": [
-        "0a7a86d8-5467-405c-a2f3-564dc85dfe0e",
-        "6c671e92-67a6-4ea8-a8ea-a3a6fba6b759",
-        "307dbb3b-6f12-434a-bdf3-e130a97f1db8",
-        "4ec84385-e11f-42dd-9d56-2d52799223e7",
-        "e0f01b56-89be-472d-84cf-5fb9e0762e60"
+        "0a7a86d8-5467-405c-a2f3-564dc85dfe0e"
       ],
       "settings": {
         "header": "Location"
