@@ -272,7 +272,7 @@
 
               {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                 <input
-                  type="text"
+                  type="hidden"
                   name="id"
                   value="{{ product.selected_or_first_available_variant.id }}"
                   disabled
