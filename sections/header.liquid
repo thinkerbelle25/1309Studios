@@ -140,7 +140,13 @@
         <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Shop</li>
       </ul>
     </div>
- 
+    {% endif %} 
+    {% if template == "page.contact" %}
+    <div class="mblmenu_container">
+      <ul class="mblmenu">
+        <li class="menu_shop_mbl" onclick="location.href='{{ shop.url }}'">Contact</li>
+      </ul>
+    </div>
     {% endif %} 
     {% if template.name == "collection" %}
     <div class="mblmenu_container">
@@ -168,7 +174,7 @@
               <div class="menu-drawer__navigation-container">
                 <nav class="menu-drawer__navigation">
                   <ul class="ecp_header_menu" role="list">
-                    <li class="ecp_menu_items" onclick="closemenudrawer()">Close</li>
+                    <li class="ecp_menu_items item_close_drawer" onclick="closemenudrawer()">{% render 'icon-close' %}</li>
                     {%- for link in section.settings.menu.links -%}
                       <li class="ecp_menu_items ">
                           <a href="{{ link.url }}" {% if link.current %} aria-current="page"{% endif %}>
@@ -475,8 +481,13 @@
           <div>
             <!--STORE LOGO-->
             {% if section.settings.logo != blank %}
+              {% unless template == "page.contact" %}
               <img class="ecp_store_logo" src="{{ section.settings.logo | image_url: width: section.settings.width }}"  width="{{ section.settings.logo.width }}"
               height="{{ section.settings.logo.height }}" loading="lazy"/>
+              {% else %}
+              <img class="ecp_store_logo" src="{{ section.settings.logo2 | image_url: width: section.settings.width }}"  width="{{ section.settings.logo2.width }}"
+              height="{{ section.settings.logo2.height }}" loading="lazy"/>
+              {% endunless %}
             {%else%}
             <div class="storelogo_container">
               <div class="storelogo_item">
@@ -770,6 +781,11 @@
       "type": "image_picker",
       "id": "logo",
       "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo2",
+      "label": "Secondary Logo"
     },
     {
       "type": "range",

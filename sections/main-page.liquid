@@ -18,13 +18,28 @@
   }
 {%- endstyle -%}
 
-<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="page-width section-{{ section.id }}-padding">
+  {% comment %}
   <h1 class="main-page-title page-title h0">
     {{ page.title | escape }}
   </h1>
+  {% endcomment %}
   <div class="rte">
     {{ page.content }}
   </div>
+  {% for block in section.blocks %}
+    <div class="page-section-text-block">
+      <div class="page-text-block-header">
+       {% unless block.settings.icon == blank %}
+       <img src="{{ block.settings.icon | image_url }}" height="35" width="38" loading="lazy" />
+       {% endunless %}
+        <h1 class="page-block-tlt">{{ block.settings.header | default: "Page Block Heading/Title" }}</h1>
+      </div>
+      <div class="page-text-block-text ">
+        {{ block.settings.text | default: "Add Text here." }}
+      </div>
+    </div>
+  {% endfor %}
 </div>
 
 {% schema %}
@@ -56,6 +71,29 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Page Text",
+      "type": "text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Heading/Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Content"
+        }
+      ]
     }
   ]
 }

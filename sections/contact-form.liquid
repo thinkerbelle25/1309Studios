@@ -14,13 +14,27 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+<div class="">
+  <div class="contact page-width section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
       <h2 class="title title-wrapper--no-top-margin {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
+    <div class="contact-grid">
+      <div>
+        <h2>Please email us with<br> online order inquiries</h2>
+        <h2>customerservice@1309studios.com</h2>
+        <button>EMAIL US</button>
+      </div>
+      <div>
+        <h2>For urgent requests please contact us on</h2>
+        <h2>+974 5019 4704</h2>
+        <button>CALL US</button>
+      </div>
+    </div>
+    <h2 class="store-contact-loc">1309 Studio, Al Maha Compound 58, Al-Salamiya Street, Al-Soudan, Doha, Qatar</h2>
+  <!--
     {%- form 'contact', id: 'ContactForm', class: 'isolate' -%}
       {%- if form.posted_successfully? -%}
         <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</h2>
@@ -89,6 +103,7 @@
         </button>
       </div>
     {%- endform -%}
+    -->
   </div>
 </div>
 
@@ -123,34 +138,6 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label"
     },
     {
       "type": "header",
