@@ -127,10 +127,13 @@
       <p>{{ product.description }}</p>
     </div>
     <div>
+      {%- assign product_form_id = 'product-form-' | append: section.id -%}
       <ul class="product_selector_forms">
         <li style="border-bottom: 1px solid;">
           <!---PRODUCT PRICE-->
-          {{ product.price | money }}
+          <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+            {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+          </div>
           <!---END OF PRODUCT PRICE-->
         </li>
         <li  
@@ -269,7 +272,7 @@
 
               {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                 <input
-                  type="hidden"
+                  type="text"
                   name="id"
                   value="{{ product.selected_or_first_available_variant.id }}"
                   disabled
