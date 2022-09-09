@@ -59,6 +59,10 @@ ul.maps_rows li div.iframe_map{
     height: 320px;
     border:solid #a5a3a3 .8px;
 }
+@media only screen and (max-width: 400px){
+    
+    ul.maps_rows li div.iframe_map{ width: 90vw}
+}
 li div.iframe_map iframe{
     filter: grayscale(1) sepia(20%) contrast(100%);
     object-fit: cover;

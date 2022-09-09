@@ -617,7 +617,7 @@ noscript .localization-selector.link {
     display: block;
     margin-bottom: 1.2rem;}
 .newsletter-form__button2{display: block;margin: 10px auto;    height: 40px;}
-.footer__copyright{    text-align: left;font-size: 10px;line-height: 10px;color: #222;}
+.footer__copyright{    text-align: center;font-size: 13.5px;line-height: 25px;color: #222;}
 .footer__column--info{padding-left:0 ;padding-right: 0;}
 .footer-blocks-grid{width: 100%;}
 .footer-block__links{

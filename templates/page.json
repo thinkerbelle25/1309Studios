@@ -2,18 +2,6 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "blocks": {
-        "acd8d62a-14c1-485b-b1a5-d9d7a2936af1": {
-          "type": "text",
-          "settings": {
-            "header": "",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "acd8d62a-14c1-485b-b1a5-d9d7a2936af1"
-      ],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
