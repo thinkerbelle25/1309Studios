@@ -103,12 +103,65 @@
       <div class="fcp-swiper-container fcp-swiper-1" style="right: 80px;" data-secId="{{ section.id }}-1">
         <span data-secId="{{ section.id }}" class="featured-swiper featured-swiper-active" onclick="featured2goto(0, '{{ section.id }}')"></span> 
         <span data-secId="{{ section.id }}" class="featured-swiper" onclick="featured2goto(1, '{{ section.id }}')"></span> 
+        <br>
+        <a href="{{ section.settings.featured_collection.url }}">View all</a>
       </div>
       <div class="fcp-swiper-container" style="right: -45vw; display: none;" data-secId="{{ section.id }}-2">
         <span data-secId="{{ section.id }}" class="featured-swiper " onclick="featured2goto(0, '{{ section.id }}')"></span> 
-        <span data-secId="{{ section.id }}" class="featured-swiper featured-swiper-active" onclick="featured2goto(1, '{{ section.id }}')"></span> 
+        <span data-secId="{{ section.id }}" class="featured-swiper featured-swiper-active" onclick="featured2goto(1, '{{ section.id }}')"></span>
+        <br>
+        <a href="{{ section.settings.featured_collection.url }}">View all</a> 
       </div>
       
+    </div>
+  </div>
+  <div class="featured-collection-grid-sm-2">
+    <div class="featured-wrapper-mobile">
+      <div  onclick="location.href='{{ all_products[grids_products[0]].url }}'">
+        {% if section.settings.featured_collection != blank %}
+        <img class="fcprod-ft-img-1 fcproduct1" loading="lazy" src="{{ all_products[grids_products[0]].featured_media | image_url: width: 300 }}" height="auto" width="300" />
+       {% else %}
+       {{ 'image' | placeholder_svg_tag }}
+       {% endif %}
+       <h6 style="margin:0;line-height: 10.8px;">{{ all_products[grids_products[0]].title }}<br>{{ all_products[grids_products[0]].price | money }}</h6>
+      </div>
+      <div  onclick="location.href='{{ all_products[grids_products[1]].url }}'">
+        {% if section.settings.featured_collection != blank %}
+        <img class="fcprod-ft-img-2-mbl " loading="lazy" src="{{ all_products[grids_products[1]].featured_media | image_url: width: 300 }}" height="auto" width="300" />
+       {% else %}
+       {{ 'image' | placeholder_svg_tag }}
+       {% endif %}
+       <h6 style="margin:0;margin-left: -60px;line-height: 10.8px;">{{ all_products[grids_products[1]].title }}<br>{{ all_products[grids_products[1]].price | money }}</h6>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns: 1fr;height: 100%; grid-gap: 35px;overflow: hidden;">
+            <div  onclick="location.href='{{ all_products[grids_products[2]].url }}'">
+              <img class="" loading="lazy" src="{{ all_products[grids_products[2]].featured_media | image_url: width: 300 }}" height="auto" width="160" />
+              <h6 style="margin:0;">{{ all_products[grids_products[2]].title }}<br>{{ all_products[grids_products[2]].price | money }}</h6>
+            </div>
+            <div  onclick="location.href='{{ all_products[grids_products[3]].url }}'">
+              <img class="" loading="lazy" src="{{ all_products[grids_products[3]].featured_media | image_url: width: 300 }}" height="auto" width="160" />
+              <h6 style="margin:0;line-height: 10.8px;">{{ all_products[grids_products[3]].title }}<br>{{ all_products[grids_products[3]].price | money }}</h6>
+            </div>
+        </div>
+      </div>
+      <div  onclick="location.href='{{ all_products[grids_products[4]].url }}'">
+        {% if section.settings.featured_collection != blank %}
+        <img class="fcprod-ft-img-2-mbl " loading="lazy" src="{{ all_products[grids_products[4]].featured_media | image_url: width: 300 }}" height="auto" width="300" />
+        
+       {% else %}
+       {{ 'image' | placeholder_svg_tag }}
+       {% endif %}
+       <h6 style="margin:0;margin-left: -60px;line-height: 10.8px;">{{ all_products[grids_products[4]].title }}<br>{{ all_products[grids_products[4]].price | money }}</h6>
+      </div>
+      <div  onclick="location.href='{{ all_products[grids_products[5]].url }}'">
+        {% if section.settings.featured_collection != blank %}
+        <img class="fcprod-ft-img-3-mbl " loading="lazy" src="{{ all_products[grids_products[5]].featured_media | image_url: width: 300 }}" height="auto" width="300" />
+       {% else %}
+       {{ 'image' | placeholder_svg_tag }}
+       {% endif %}
+        <h6 style="margin:0;margin-left: -30px;line-height: 10.8px;">{{ all_products[grids_products[5]].title }}<br>{{ all_products[grids_products[5]].price | money }}</h6>
+      </div>
     </div>
   </div>
 </div>

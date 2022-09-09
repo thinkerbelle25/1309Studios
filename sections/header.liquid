@@ -482,11 +482,15 @@
             <!--STORE LOGO-->
             {% if section.settings.logo != blank %}
               {% unless template == "page.contact" %}
+              <a href="{{ routes.root_url }}">
               <img class="ecp_store_logo" src="{{ section.settings.logo | image_url: width: section.settings.width }}"  width="{{ section.settings.logo.width }}"
               height="{{ section.settings.logo.height }}" loading="lazy"/>
+            </a>
               {% else %}
+              <a href="{{ routes.root_url }}">
               <img class="ecp_store_logo" src="{{ section.settings.logo2 | image_url: width: section.settings.width }}"  width="{{ section.settings.logo2.width }}"
               height="{{ section.settings.logo2.height }}" loading="lazy"/>
+              </a>
               {% endunless %}
             {%else%}
             <div class="storelogo_container">

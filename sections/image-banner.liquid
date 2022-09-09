@@ -6,6 +6,7 @@
   }
 {%- endstyle -%}
 {% assign blockcounter = 0 %}
+<div style="position: relative;width:100%;overflow: hidden;">
 <div id="Banner-{{ section.id }}" class="banner banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}">
   {%- for block in section.blocks -%}
     <div class="banner__media media{% if block.settings.image == blank %} placeholder{% endif %} image_slider_block 
@@ -25,6 +26,11 @@
         alt: block.settings.image.alt | escape
       }}
       {% endunless %}
+      <div class="floating_store_logo_mbl">
+        <div>
+          <img loading="lazy" src="{{ section.settings.store_logo | image_url: width: 300 }}" width="auto" height="auto" />
+        </div>
+      </div>
     </div>
     {%- liquid 
       if blockcounter < 1
@@ -36,13 +42,17 @@
 
     {% unless blockcounter < 2 %}
       {% assign blockcounter2 = 0 %}
-      <div class="slider_ctrl_container">
+      <div class="slider_ctrl_container sld-crtl-{{ section.id }}">
         {%- for block in section.blocks -%}
-          <span data-block="{{ block.id }}" data-section="{{ section.id }}" class="slider_ctrl  {% if blockcounter2 < 1 %} active_slider{% endif %}"></span>
+          <span data-block="{{ block.id }}" data-slidernum="{{ blockcounter2 }}" data-section="{{ section.id }}" class="slider_ctrl  {% if blockcounter2 < 1 %} active_slider{% endif %}"></span>
           {% assign blockcounter2 = blockcounter2 | plus: 1 %}
         {%- endfor -%}
       </div>
     {% endunless %}
+    {% unless section.settings.store_logo == blank %}
+    
+    {% endunless %}
+</div>
 </div>
   {%- style -%}
   @media screen and (max-width: 749px) {
@@ -53,7 +63,7 @@
       content: '';
       display: block;
     }
-    #Banner-{{ section.id }}{ padding-bottom: 100%;}
+    
   }
   {%- endstyle -%}
 <script>
@@ -62,19 +72,22 @@
  
   dots.forEach(function(elem) {
     elem.addEventListener("click", function() {
-      var datablock = elem.getAttribute('data-block');
+     
+      var datablocknum = elem.getAttribute('data-slidernum');
       var datasection = elem.getAttribute('data-section');
       let sliders = document.getElementsByClassName("image_slider_" + datasection);
+      var slidescontainer = document.getElementById("Banner-"+ datasection);
+      var dotcontainer = document.querySelector(".sld-crtl-"+ datasection);
       
-      for (i = 0; i < sliders.length; i++) {
-        sliders[i].style.display = "none";
-        }
-        document.getElementById(datablock).style.display = "block";
-        let dots = document.querySelectorAll('[data-section="'+ datasection +'"]');
+      var slidesto = (parseInt(datablocknum)) * -100;
+      var dotsto = ((parseInt(datablocknum)) * 100) + 100;
+      let dots = document.querySelectorAll('[data-section="'+ datasection +'"]');
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active_slider", "");
       }
       elem.classList.add("active_slider");
+      dotcontainer.style.width = dotsto + "vw";
+      slidescontainer.style.transform = "translate3d(" + slidesto +"vw, 0, 0)";
     });
   });
 </script>
@@ -168,13 +181,19 @@
       ],
       "default": "center",
       "label": "t:sections.image-banner.settings.mobile_content_alignment.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "store_logo",
+      "label": "Store logo",
+      "info": "Add floating logo on mobile"
     }
   ],
   "blocks": [
     {
       "type": "heading",
-      "name": "Image on Slide",
-      "limit": 3,
+      "name": "Image on slide",
+      "limit": 10,
       "settings": [
         {
           "type": "image_picker",
