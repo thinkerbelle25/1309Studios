@@ -3113,4 +3113,11 @@ details-disclosure > details {
 }
 .svg-icon{width: 18px;}
 .svg-icon2{width: 20px;margin-bottom: -3px}
-.svg-icon3{width: 105px;}
+.svg-icon3{width: 35px;margin-bottom: -3px}
+.svg-icon4{width: 28px;margin-bottom: -3px}
+.page-block-tlt{
+  margin: 0;
+  padding: 0;
+  align-self: flex-end;
+  line-height: 18px;
+}
