@@ -93,6 +93,23 @@
   }
 </script>
 {%- style -%}
+.linklist-logo--top {
+  align-self: flex-start;
+}
+.slidenav {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: 0;
+  text-align:center;
+}
+
   .header {
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
@@ -130,7 +147,8 @@
   <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
-</svg>                                                                     
+</svg>                           
+                                          
 <div class="header-wrapper">
   <!--mobile area--->
   <header class=" {% if section.settings.menu != blank %} header--has-menu{% endif %} {% if template.name == "collection" or template.name == "product" %} header--has-menu_onproduct {% endif %}"  {% if template.name == "collection" %} style="min-height: 115px;" {% endif %}>
@@ -165,8 +183,7 @@
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
           <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
             <span id="medu_drawer_swtch">
-              {% render 'icon-hamburger' %}
-              {% render 'icon-close' %}
+              {% render 'icon-1309-sun-1' %}
             </span>
           </summary>
           <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
@@ -176,9 +193,9 @@
                   <ul class="ecp_header_menu" role="list">
                     <li class="ecp_menu_items item_close_drawer" onclick="closemenudrawer()">{% render 'icon-close' %}</li>
                     {%- for link in section.settings.menu.links -%}
-                      <li class="ecp_menu_items ">
-                          <a href="{{ link.url }}" {% if link.current %} aria-current="page"{% endif %}>
-                            {{ link.title | escape }}
+                      <li class="ecp_menu_items {% if link.levels > 0 %} withsubmenu {% endif %}"  data-handle="{{ link.handle }}">
+                          <a {% if link.levels == 0 %}  href="{{ link.url }}"{% endif %} {% if link.current %} aria-current="page"{% endif %}>
+                            {% if link.levels > 0 %} {{ link.title }} {% else %}{{ link.title | link_to: link.url }}{% endif %}
                           </a>
                       </li>
                     {%- endfor -%}
@@ -263,7 +280,6 @@
                             <span class="h1">{{ shop.name }}</span>
                           </div>
                         </div>
-                          
                         {% endif %}
                     </li>
                     {% unless section.settings.menu_layout == "menu_layout1" %}
@@ -386,20 +402,67 @@
     {%- endif -%}
 
    
-       
 <!--end of mobile area--->
 
     {% comment %}
         pulled out the logo and the menu list
       {% endcomment %}
-  
+
+  <!--Desktop linklist area--->
+  {% for link in section.settings.menu.links %}
+  {% if link.levels > 0 %}
+  <div class="slidenav" id="childlink-{{ link.handle }}">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav('childlink-{{ link.handle }}')">&times;</a>
+    <div class="linklist-logo--top">
+      {% if section.settings.logo != blank %}
+      <img class="ecp_store_logo" src="{{ section.settings.logo | image_url: width: 150 }}"  width="150"
+      height="auto" loading="lazy"/>
+    {%else%}
+      <div class="storelogo_container">
+        <div class="storelogo_item">
+          <span class="h1">{{ shop.name }}</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="nav-childlink-list fade" id="listItem-{{ link.handle }}">
+      <div class="slidenav-link-item">
+        <h2>{{ link.title }}</h2>
+        {% for sub_link in link.links %}
+        <label class="label-link-list {% if sub_link.levels > 0 %} link-with-sublink{% endif %}"
+        {% if sub_link.levels > 0 %} onclick="openGrandchildlnks('{{ sub_link.hadle }}','listItem-{{ link.handle }}');"{% else %} onclick="location.href='{{ link.url }}'"{% endif %}>
+        {{ sub_link.title }}  {% if sub_link.levels > 0 %} {% render 'icon-arrow-enter' %} {% endif %}
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="nav-childlink-list grandchild-list fade" style="display: none;" id="grandchild-{{ sub_link.hadle }}">
+      <div class="slidenav-link-item">
+    {% for sub_link in link.links %}
+    {% if sub_link.levels > 0 %}
+        <div data-mainlink="{{ link.handle }}" id="{{ sub_link.hadle }}">
+          <h2>{{ sub_link.title }}</h2>
+          {% for sub_sub_link in sub_link.links %}
+          <label class="label-link-list">{{ sub_sub_link.title }}</label>
+          {% endfor %}          
+        </div>
+    {% endif %}
+    {% endfor %}
+    <button onclick="Closegrandchildlnks('listItem-{{ link.handle }}','{{ sub_link.hadle }}');">{% render 'icon-arrow-back' %} Back</button>
+    </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+ <!-- Desktop linklist area end-->
       <div class="ecp_header_container">
         <div class="ecp_header_grid">
           <div>
             <ul class="ecp_header_menu">
               {% for link in section.settings.menu.links %}
-                  <li class="h3 ecp_menu_items">
-                    {{ link.title | link_to: link.url }}
+                  <li class="h3 ecp_menu_items {% if link.levels > 0 %} withsubmenu {% endif %}" data-handle="{{ link.handle }}">
+                    {% if link.levels > 0 %} {{ link.title }} {% else %}{{ link.title | link_to: link.url }}{% endif %}
                   </li>
               {% endfor %}
               {% unless section.settings.menu_layout == "menu_layout2" %}
@@ -628,6 +691,37 @@
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: "accent-1" -%}
 {%- endif -%}
+<script>
+
+  function closeNav(linkslidenav){
+      document.getElementById(linkslidenav).style.height = "0";
+      var allsublinks = document.getElementsByClassName("grandchild-list");
+      var alllinks = document.getElementsByClassName("nav-childlink-list");
+      for (i = 0; i < alllinks.length; i++){
+        alllinks[i].style.display = "flex";
+      }
+      for (i = 0; i < allsublinks.length; i++){
+        allsublinks[i].style.display = "none";
+      }
+  }
+  const  withsubmenulinks = document.querySelectorAll(".withsubmenu");
+  withsubmenulinks.forEach(function(elmnt) {
+  elmnt.addEventListener("click", function() {
+    var datalink = elmnt.getAttribute('data-handle');
+    var navslide = document.getElementById("childlink-" + datalink);
+    navslide.style.height = "100vh";
+  });
+});
+function openGrandchildlnks(linktoOpen,linktohide){
+    document.getElementById(linktohide).style.display = "none";    
+    document.getElementById("grandchild-" + linktoOpen).style.display = "flex";                  
+ }
+ function Closegrandchildlnks(linktoOpen,linktohide){
+  document.getElementById("grandchild-" + linktohide).style.display = "none";    
+    document.getElementById(linktoOpen).style.display = "flex";  
+ }
+</script>
+
 <script>
   let filterOnColheader = document.getElementsByClassName("mbl_header_fltr")[0];
   let sortOnColheader = document.getElementsByClassName("mbl_header_srt")[0];

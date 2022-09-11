@@ -26,11 +26,13 @@
         alt: block.settings.image.alt | escape
       }}
       {% endunless %}
+      {% unless section.settings.store_logo == blank %}
       <div class="floating_store_logo_mbl">
         <div>
           <img loading="lazy" src="{{ section.settings.store_logo | image_url: width: 300 }}" width="auto" height="auto" />
         </div>
       </div>
+      {% endunless %}
     </div>
     {%- liquid 
       if blockcounter < 1
