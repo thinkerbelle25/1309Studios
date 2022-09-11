@@ -14,11 +14,25 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Capture_7N3A0156_db8707ac-2f45-42fd-91f4-cc25619c83de.jpg"
           }
+        },
+        "00bfd6bc-9f5b-4a86-bdc2-0fe6fd60b42b": {
+          "type": "heading",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner1.webp"
+          }
+        },
+        "b4319ea8-1c6f-4135-9b1a-62667ad9c0cf": {
+          "type": "heading",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled-1212.webp"
+          }
         }
       },
       "block_order": [
         "heading",
-        "e27b603e-35d0-49fc-86ea-ca2c2e20a9da"
+        "e27b603e-35d0-49fc-86ea-ca2c2e20a9da",
+        "00bfd6bc-9f5b-4a86-bdc2-0fe6fd60b42b",
+        "b4319ea8-1c6f-4135-9b1a-62667ad9c0cf"
       ],
       "settings": {
         "image_overlay_opacity": 40,
