@@ -3106,7 +3106,11 @@ details-disclosure > details {
 .gradient-contact-page small{
   color: var(--color-icon);
 }
+.gradient-contact-page a{ color: var(--gradient-base-accent-2) !important;text-decoration:none;}
 @media only screen and (max-width: 500px){
   .gradient-contact-page .ecp_menu_items{    border-bottom: solid var(--gradient-base-accent-1) 1px;color:var(--gradient-base-accent-1) !important; }
   .gradient-contact-page li a,.gradient-contact-page .menu-drawer__navigation span{color:var(--gradient-base-accent-1) !important;}
 }
+.svg-icon{width: 18px;}
+.svg-icon2{width: 20px;margin-bottom: -3px}
+.svg-icon3{width: 105px;}
