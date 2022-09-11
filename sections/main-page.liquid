@@ -30,9 +30,20 @@
   {% for block in section.blocks %}
     <div class="page-section-text-block">
       <div class="page-text-block-header">
-       {% unless block.settings.icon == blank %}
-       <img src="{{ block.settings.icon | image_url }}" height="35" width="38" loading="lazy" />
-       {% endunless %}
+       {%- liquid
+         unless block.settings.icons == blank
+           assign selectedIcon = block.settings.icons 
+           case selectedIcon 
+           when "icon-1309-coconut" 
+            render 'icon-1309-coconut' 
+            when "icon-1309-half-sun" 
+           render 'icon-1309-half-sun' 
+           when "icon-1309-sun-moon"
+           render 'icon-1309-sun-moon'
+           when "icon-1309-star"
+           render 'icon-1309-star'
+        endcase
+       endunless -%}
         <h1 class="page-block-tlt">{{ block.settings.header | default: "Page Block Heading/Title" }}</h1>
       </div>
       <div class="page-text-block-text ">
@@ -79,9 +90,28 @@
       "type": "text",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
+          "type": "select",
+          "id": "icons",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "icon-1309-coconut",
+              "label": "Coconut"
+            },
+            {
+              "value": "icon-1309-half-sun",
+              "label": "Sun 1"
+            },
+            {
+              "value": "icon-1309-sun-moon",
+              "label": "Sun & moon"
+            },
+            {
+              "value": "icon-1309-star",
+              "label": "Star"
+            }
+          ],
+          "default": "icon-1309-coconut"
         },
         {
           "type": "text",

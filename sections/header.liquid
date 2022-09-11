@@ -183,7 +183,7 @@
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
           <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
             <span id="medu_drawer_swtch">
-              {% render 'icon-1309-sun-1' %}
+             {% render 'icon-1309-star' %} 
             </span>
           </summary>
           <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
@@ -412,7 +412,7 @@
   {% for link in section.settings.menu.links %}
   {% if link.levels > 0 %}
   <div class="slidenav" id="childlink-{{ link.handle }}">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav('childlink-{{ link.handle }}')">&times;</a>
+    <a class="closebtn" onclick="closeNav('childlink-{{ link.handle }}')">&times;</a>
     <div class="linklist-logo--top">
       {% if section.settings.logo != blank %}
       <img class="ecp_store_logo" src="{{ section.settings.logo | image_url: width: 150 }}"  width="150"
