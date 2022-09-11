@@ -2,6 +2,19 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "blocks": {
+        "f3713944-c0cf-48a1-b29d-c637bb073c05": {
+          "type": "text",
+          "settings": {
+            "icons": "icon-1309-coconut",
+            "header": "Brand",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ullamcorper eget nulla facilisi etiam. Ac felis donec et odio pellentesque diam volutpat. Magna etiam tempor orci eu lobortis elementum nibh. Tortor id aliquet lectus proin nibh nisl. Leo urna molestie at elementum eu facilisis sed odio. Posuere ac ut consequat semper viverra nam. Lobortis mattis aliquam faucibus purus in massa. Mauris ultrices eros in cursus. Morbi tempus iaculis urna id volutpat lacus. Amet nisl suscipit adipiscing bibendum est. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Vel fringilla est ullamcorper eget nulla facilisi etiam. Urna et pharetra pharetra massa massa ultricies mi. Egestas sed sed risus pretium quam vulputate dignissim. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices gravida.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f3713944-c0cf-48a1-b29d-c637bb073c05"
+      ],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
