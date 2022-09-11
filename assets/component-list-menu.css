@@ -28,3 +28,74 @@
   width: 10rem;
   padding: 0.5rem;
 }
+
+
+
+.slidenav {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: 0;
+  text-align:center;
+}
+
+.slidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+
+}
+
+.slidenav a:hover{
+  color: #222;
+}
+
+.slidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+.grandchild-list button{background-color: transparent;border: none;font-size: 14px;    display: flex;
+  align-items: center;margin: 10px auto;color:#222;cursor: pointer;}
+.grandchild-list button:hover{text-decoration: underline;}
+.label-link-list{cursor: pointer;font-size: 18px;display: block;}
+.label-link-list:hover{text-decoration: underline;}
+.withsubmenu{cursor:pointer;}
+.nav-childlink-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.link-with-sublink{display: flex;column-gap: 5px;align-items: center;    justify-content: center;}
+.slidenav-link-item {
+  max-width: 450px;
+  min-width: 200px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+@media only screen and (max-width: 750px){
+  .slidenav {z-index: 4 !important;}
+}

@@ -1,6 +1,5 @@
-.next-prev-products-grid{width: fit-content;display: grid;grid-template-columns: repeat(2, 1fr);
-    height: 550px;margin: 0px auto;grid-gap:320px;padding-top: 100px;filter: opacity(0.5) grayscale(.9);
-    opacity: .45;}
+.next-prev-products-grid{width: fit-content;display: grid;grid-template-columns: 1fr 380px 1fr;
+   margin: 0px auto;grid-gap:0px;padding-top:0px;}
 .product-name{margin: 10px;}
 .previousnxt_media_img {display: none;}
 .previousnxt_media_active_img{display: block;}
@@ -15,7 +14,13 @@
     top: 0;
     
 }
-
+.product_img_ctrl_prev, .product_img_ctrl_next{
+    width: 250px;
+    filter: opacity(0.5) grayscale(.9);
+    opacity: .45;
+    padding-top:35%;
+    cursor: pointer;
+}
 .product_preview_media{width: 100%;
     position: absolute;
     top: 0;
@@ -25,7 +30,7 @@
 .media_img {display: none;}
 .media_active_img{display: block;width: fit-content;margin: 0 auto;}
 .media_img.media_active_img img{border: solid #222 1px;    max-height: 560px;}
-.media_img video{border: solid #222 1px;    max-height: 560px;}
+.media_img video{border: solid #222 1px;max-height: 560px;width: 380px;height: 560px;object-position: center;object-fit: cover;}
 .product_thumbnails{display: grid;grid-gap: 10px;    width: fit-content;margin: 25px auto; max-width: 200%;}
 .product-thumbnails-mobile{width: 100%;display: block;position: relative;overflow: scroll;}
 .product-thumbnails-mobile::-webkit-scrollbar{ width: 0px;background: transparent;}
@@ -102,15 +107,15 @@ z-index: 1;
 .variant_btn{cursor: pointer;}
 .product_thumbnails >div{cursor: pointer;}
 @media only screen and (max-width: 859px){
-    .next-prev-products-grid{grid-gap: 269px;}
+   
 }
 @media only screen and (max-width: 800px){
-    .next-prev-products-grid{display:none;}
+    .product_img_ctrl_next, .product_img_ctrl_prev{display:none;}
     .product_details_and_form{grid-template-columns: 1fr .65fr;}
 
 }
 @media only screen and (max-width: 600px){
-    .next-prev-products-grid{display:none;}
+ 
     .product_details_and_form{grid-template-columns: 1fr;}
     .product_thumbnails{margin-bottom: 0;}
     .product_details_and_form p{margin-top: 0;}

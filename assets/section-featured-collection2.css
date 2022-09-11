@@ -204,7 +204,21 @@ min-height:100%;
 }
 */
 .featured-collection-grid-sm-2{display: none;}
+.view-all-collection{display: none;}
 @media only screen and (max-width: 750px){
+    .view-all-collection {
+        border: 1px solid rgb(var(--color-foreground));
+    color: rgb(var(--color-foreground));
+    background: transparent;
+    font-family: var(--font-body-family);
+    padding: 6px 12px;
+    cursor: pointer;
+    margin: 15px auto;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    margin-top: -25px;
+    }
     .outer-featured-collection-grid-2{display: none;}
 .featured-collection-grid-sm-2{display: flex;width: 100%;
     position: relative;

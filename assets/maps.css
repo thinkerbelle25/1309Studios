@@ -137,6 +137,7 @@ ul.maps_row2 li div.iframe_map{
     }
 }
 @media only screen and (max-width: 750px){
+    .maps-full-width{padding-right: 10px;}
     ul.maps_row1 li div.iframe_map{
         width: 100%;height: 450px;
     }
