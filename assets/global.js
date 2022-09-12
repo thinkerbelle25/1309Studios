@@ -740,8 +740,10 @@ class SlideshowComponent extends SliderComponent {
     });
   }
 }
+customElements.define('slideshow-component', SlideshowComponent); 
 
-customElements.define('slideshow-component', SlideshowComponent);
+
+
 
 class VariantSelects extends HTMLElement {
   constructor() {
@@ -750,7 +752,7 @@ class VariantSelects extends HTMLElement {
   }
 
   onVariantChange() {
-   
+
     this.updateOptions();
     this.updateMasterId();
     this.toggleAddButton(true, '', false);
@@ -806,6 +808,7 @@ class VariantSelects extends HTMLElement {
   }
 
   updateVariantInput() {
+
     const productForms = document.querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment-${this.dataset.section}`);
     productForms.forEach((productForm) => {
       const input = productForm.querySelector('input[name="id"]');

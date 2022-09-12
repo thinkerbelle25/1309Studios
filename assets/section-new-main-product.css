@@ -87,7 +87,7 @@ z-index: 1;
     background-color: rgb(var(--color-button-text));
     color: rgba(var(--color-button), var(--alpha-button-background));
     text-transform: uppercase;
-    font-size: 2.2rem; min-height: 3.35rem;font-weight: 600;
+    font-size: 1.8rem; min-height: 3.35rem;font-weight: 600;
     display: block;width: 100%;
 }
 

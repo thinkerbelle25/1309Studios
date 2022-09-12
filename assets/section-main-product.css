@@ -30,7 +30,7 @@
   }
 
   .product__info-wrapper {
-    padding: 0 0 0 5rem;
+    padding: 0;
   }
 
   .product__info-wrapper--extra-padding {
@@ -157,10 +157,12 @@
 /* Form Elements */
 .product-form__input {
   flex: 0 0 100%;
-  padding: 0;
+  padding: 5px 0;
   margin:0;
   min-width: fit-content;
   border: none;
+  position:relative;
+  border-bottom: 1px solid;
 }
 
 variant-radios,
@@ -291,12 +293,12 @@ fieldset.product-form__input .form__label {
 /* Product info */
 
 .product__info-container > * + * {
-  margin: 1.5rem 0;
+  margin: 0;
 }
 
 .product__info-container .product-form,
 .product__info-container .product__description {
-  margin: 2.5rem 0;
+  margin: 0;
 }
 
 .product__text {
@@ -364,6 +366,7 @@ a.product__text {
 @media screen and (min-width: 750px) {
   .product__info-container {
     max-width: 60rem;
+    border-top: solid 1px;
   }
 
   .product__info-container .price--on-sale .price-item--regular {
@@ -372,6 +375,8 @@ a.product__text {
 
   .product__info-container > *:first-child {
     margin-top: 0;
+    padding: 5px;
+    border-bottom: solid 1px;
   }
 }
 
@@ -444,7 +449,7 @@ a.product__text {
 }
 
 .product-form__buttons {
-  max-width: 44rem;
+  max-width: 100%;
 }
 
 .product--no-media .product__info-container > modal-opener {
@@ -1193,4 +1198,77 @@ a.product__text {
   width: 1.2rem;
   margin-left: 1.2rem;
   flex-shrink: 0;
+}
+.product_description{
+  font-size: 1.55rem;
+  letter-spacing:0px;
+  line-height: 1.85rem;
+  margin: 0;
+}
+
+.product-form__input_qty{
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  padding: 5px 0;
+  margin: 0;
+  min-width: fit-content;
+  border: none;
+  border-bottom: solid 1px;
+}
+.form__label_qty, .quantity{
+  display: inline-flex;
+}
+
+.option-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 80%;
+  border: solid 1px;
+  z-index: 1;
+  border: solid 1px;
+  left: 15%;
+  text-align: center;
+  padding: 10px;
+  opacity: 1 !important;
+  z-index: 2;
+}
+.option-content a{
+  display: block;
+  cursor: pointer;
+}
+
+.product-form__input:hover .option-content{
+  display: block;
+}
+
+.social-links{
+  margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px;
+    margin-top: -5px;
+}
+.new_select_select{
+  position: absolute;
+  background: transparent;
+  height: fit-content;
+  padding: 0;
+  text-align: right;
+  display: flex;
+  font-size: 16px;
+  align-self: unset;
+  color: transparent;
+  width: 100%;
+
+}
+.new_select_select option {
+  font-size: 16px;
+  padding: 5px 8px;
+  border: none;
+  color: var(--color-icon) !important;
+  text-align: center;
+}
+.new_select_select option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset; 
 }
