@@ -30,6 +30,11 @@
                         </h3>
                     </div>
                 </a>
+                <div style="position: relative;">
+                  <h3 class="featuredCollection_productTitle">{{ product.title }}
+                    <br> {{ product.price | money }}
+                </h3>
+                </div>
                 </div>
             {%- endfor -%}
             {% endif %}

@@ -93,12 +93,6 @@
       <div>
       </div>
     </div>
-     <!---MAIN PRODUCT CARD-->
-    <div class="product_preview_media">
-     
-    </div>
-  </div>
-   <!---MAIN PRODUCT CARD END-->
   {% style %}
   .product_thumbnails{grid-template-columns:repeat({{ countProductmedia }}, 100px);}
   {% endstyle %}
@@ -125,255 +119,266 @@
   </div>
    <!---PRODUCT thumnails-->
   {%- endif -%}
+
+
+
   <div class="product_details_and_form">
     <div>
-      <p>{{ product.description }}</p>
+      <p class="product_description">{{ product.description }}</p>
     </div>
     <div>
-      {%- assign product_form_id = 'product-form-' | append: section.id -%}
-      <ul class="product_selector_forms">
-        <li style="border-bottom: 1px solid;">
-          <!---PRODUCT PRICE-->
+      <div class="product__info-wrapper {% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}">
+        <div
+          id="ProductInfo-{{ section.id }}"
+          class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}"
+        >
+          {%- assign product_form_id = 'product-form-' | append: section.id -%}
           <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
             {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
           </div>
-          <!---END OF PRODUCT PRICE-->
-        </li>
-        <li  
-         {% unless product.has_only_default_variant %}      style="border-bottom: 1px solid;" {% endunless %}>
-          <!---VARIANT  SELECTOR-->
-          {%- unless product.has_only_default_variant -%}
-              <variant-selects
-                class="no-js-hidden"
-                data-section="{{ section.id }}"
-                data-url="{{ product.url }}"
-                {{ block.shopify_attributes }}
-              >
-                {%- for option in product.options_with_values -%}
-                  <div class="product-form__input product-form__input--dropdown">
-                    <label onclick="openSelectInput(this);" class="variant_btn" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                      {{ option.name }}
-                    </label>
-                    <div class=" variant-selector-input">
-                      <select
-                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                        class="select__select"
-                        name="options[{{ option.name | escape }}]"
-                        form="{{ product_form_id }}"
-                      >
-                        {%- for value in option.values -%}
-                          <option
-                            value="{{ value | escape }}"
-                            {% if option.selected_value == value %}
-                              selected="selected"
-                            {% endif %}
-                          >
-                            {{ value }}
-                          </option>
-                        {%- endfor -%}
-                      </select>
-                      {% render 'icon-caret' %}
-                    </div>
-                  </div>
-                {%- endfor -%}
-
-                <script type="application/json">
-                  {{ product.variants | json }}
-                </script>
-              </variant-selects>
-          {%- endunless -%}
-
-          <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-            <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-              <label class="form__label" for="Variants-{{ section.id }}">
-                {{- 'products.product.product_variants' | t -}}
-              </label>
-              <div class="select">
-                <select
-                  name="id"
-                  id="Variants-{{ section.id }}"
-                  class="select__select"
-                  form="{{ product_form_id }}"
-                >
-                  {%- for variant in product.variants -%}
-                    <option
-                      {% if variant == product.selected_or_first_available_variant %}
-                        selected="selected"
-                      {% endif %}
-                      {% if variant.available == false %}
-                        disabled
-                      {% endif %}
-                      value="{{ variant.id }}"
-                    >
-                      {{ variant.title }}
-                      {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                      - {{ variant.price | money | strip_html }}
-                    </option>
-                  {%- endfor -%}
-                </select>
-                {% render 'icon-caret' %}
-              </div>
+          {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+            <div class="product__tax caption rte">
+              {%- if shop.taxes_included -%}
+                {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
             </div>
-          </noscript>
-          <!---END OF VARIANT SELECTOR-->
-        </li>
-        <li>
-          <!---QTY SELECTOR-->
-         <div class="qty_container">
-          <div
-            class="qty_elements"
-            {{ block.shopify_attributes }}
-              >
-              Quantity
-
-            <quantity-input class="quantity">
-              <button class="quantity__button no-js-hidden" name="minus" type="button">
-                <span class="visually-hidden">
-                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                </span>
-                {% render 'icon-minus' %}
-              </button>
-              <input
-                class="quantity__input"
-                type="number"
-                name="quantity"
-                id="Quantity-{{ section.id }}"
-                min="1"
-                value="1"
-                form="{{ product_form_id }}"
-              >
-              <button class="quantity__button no-js-hidden" name="plus" type="button">
-                <span class="visually-hidden">
-                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                </span>
-                {% render 'icon-plus' %}
-              </button>
-            </quantity-input>
-          </div>
-         </div>
-            <!---END OF QTY SELECTOR-->
-        </li>
-        <li>
-            <!---ADD-TO-CART--->
+          {%- endif -%}
           <div {{ block.shopify_attributes }}>
-            <product-form class="product-form">
-              <div class="product-form__error-message-wrapper" role="alert" hidden>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  role="presentation"
-                  class="icon icon-error"
-                  viewBox="0 0 13 13"
-                >
-                  <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-                  <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-                  <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-                  <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-                </svg>
-                <span class="product-form__error-message"></span>
-              </div>
-
-              {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                <input
-                  type="hidden"
-                  name="id"
-                  value="{{ product.selected_or_first_available_variant.id }}"
-                  disabled
-                >
-                <div class="">
-                  <button
-                    type="submit"
-                    name="add"
-                    class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-                    {% if product.selected_or_first_available_variant.available == false %}
-                      disabled
-                    {% endif %}
+         
+        {%- unless product.has_only_default_variant -%}
+        {%- if block.settings.picker_type == 'button' -%}
+        {%- else -%}
+          <variant-selects
+            class="no-js-hidden"
+            data-section="{{ section.id }}"
+            data-url="{{ product.url }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- for option in product.options_with_values -%}
+              <div class="product-form__input product-form__input--dropdown">              
+                <div class="select">
+                   {{ option.name }} :
+                  <select
+                    id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                    class="select__select new_select_select"
+                    name="options[{{ option.name | escape }}]"
+                    form="{{ product_form_id }}"
                   >
-                    <span>
-                      {%- if product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    <div class="loading-overlay__spinner hidden">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        role="presentation"
-                        class="spinner"
-                        viewBox="0 0 66 66"
-                        xmlns="http://www.w3.org/2000/svg"
+                    {%- for value in option.values -%}
+                      <option
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
+                        {% endif %}
                       >
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                      </svg>
-                    </div>
-                  </button>
-                  {%- if block.settings.show_dynamic_checkout -%}
-                    {{ form | payment_button }}
-                  {%- endif -%}
+                        {{ value }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                
                 </div>
-              {%- endform -%}
-            </product-form>
-
-            {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
-
-            {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
-
-            <pickup-availability
-              class="product__pickup-availabilities no-js-hidden quick-add-hidden"
-              {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
-                available
-              {% endif %}
-              data-root-url="{{ routes.root_url }}"
-              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-              data-has-only-default-variant="{{ product.has_only_default_variant }}"
+              </div>
+            {%- endfor -%}
+    
+            <script type="application/json">
+              {{ product.variants | json }}
+            </script>        
+          </variant-selects>
+        {%- endif -%}
+      {%- endunless -%}
+    
+      <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+        <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+          <label class="form__label" for="Variants-{{ section.id }}">
+            {{- 'products.product.product_variants' | t -}}
+          </label>
+          <div class="select">
+            <select
+              name="id"
+              id="Variants-{{ section.id }}"
+              class="select__select"
+              form="{{ product_form_id }}"
             >
-              <template>
-                <pickup-availability-preview class="pickup-availability-preview">
-                  {% render 'icon-unavailable' %}
-                  <div class="pickup-availability-info">
-                    <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
-                    <button class="pickup-availability-button link link--text underlined-link">
-                      {{ 'products.product.pickup_availability.refresh' | t }}
-                    </button>
-                  </div>
-                </pickup-availability-preview>
-              </template>
-            </pickup-availability>
+              {%- for variant in product.variants -%}
+                <option
+                  {% if variant == product.selected_or_first_available_variant %}
+                    selected="selected"
+                  {% endif %}
+                  {% if variant.available == false %}
+                    disabled
+                  {% endif %}
+                  value="{{ variant.id }}"
+                >
+                  {{ variant.title }}
+                  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                  - {{ variant.price | money | strip_html }}
+                </option>
+              {%- endfor -%}
+            </select>
+            {% render 'icon-caret' %}
           </div>
+        </div>
+      </noscript>
+      <div
+      class="product-form__input_qty product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      <label class="form__label_qty" for="Quantity-{{ section.id }}">
+        {{ 'products.product.quantity.label' | t }}:
+      </label>
+
+      <quantity-input class="quantity">
+        <button class="quantity__button no-js-hidden" name="minus" type="button">
+          <span class="visually-hidden">
+            {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+          </span>
+          –
+        </button>
+        <input
+          class="quantity__input"
+          type="number"
+          name="quantity"
+          id="Quantity-{{ section.id }}"
+          min="1"
+          value="1"
+          form="{{ product_form_id }}"
+        >
+        <button class="quantity__button no-js-hidden" name="plus" type="button">
+          <span class="visually-hidden">
+            {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+          </span>
+          +
+        </button>
+      </quantity-input>
+    </div>
+      <div {{ block.shopify_attributes }}>
+        <product-form class="product-form">
+          <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="icon icon-error"
+              viewBox="0 0 13 13"
+            >
+              <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+              <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+              <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+              <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+            </svg>
+            <span class="product-form__error-message"></span>
+          </div>
+    
+          {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+              disabled
+            >
+            <div class="product-form__buttons">
+              <button
+                type="submit"
+                name="add"
+                class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+                {% if product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                <span>
+                  {%- if product.selected_or_first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    role="presentation"
+                    class="spinner"
+                    viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </button>
+              {%- if block.settings.show_dynamic_checkout -%}
+                {{ form | payment_button }}
+              {%- endif -%}
+            </div>
+          {%- endform -%}
+        </product-form>
+    
+        {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+    
+        {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+    
+        <pickup-availability
+          class="product__pickup-availabilities no-js-hidden quick-add-hidden"
+          {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+            available
+          {% endif %}
+          data-root-url="{{ routes.root_url }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          data-has-only-default-variant="{{ product.has_only_default_variant }}"
+        >
+          <template>
+            <pickup-availability-preview class="pickup-availability-preview">
+              {% render 'icon-unavailable' %}
+              <div class="pickup-availability-info">
+                <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+                <button class="pickup-availability-button link link--text underlined-link">
+                  {{ 'products.product.pickup_availability.refresh' | t }}
+                </button>
+              </div>
+            </pickup-availability-preview>
+          </template>
+        </pickup-availability>
+      </div>
+    
+      <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+    
+                  
+        </div>
+        {%-liquid 
+          assign share_title = product.title 
+          assign share_permalink = product.url
+          -%}
+    
+        <div class="sharing social-links">
+          
+          <ul class="sharing-list">
+            <li>Share:</li>
+            <li class="facebook">
+              <a target="_blank" class="sharing-link" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
+                <span aria-hidden="true">FB</span>
+                <span class="visually-hidden">facebook</span>
+              </a>
+            </li>
+            <li class="twitter">
+              <a target="_blank" class="sharing-link" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
+                <span aria-hidden="true">TW</span>
+                <span class="visually-hidden">twitter</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
               <!---END-OF-ADD-TO-CART--->
-        </li>
-        <li>
-          <!---SHARE BTN--->
-          {%-liquid 
-            assign share_title = product.title 
-            assign share_permalink = product.url
-            -%}
-      
-          <div class="sharing social-links">
-            
-            <ul class="sharing-list">
-              <li>Share:</li>
-              <li class="facebook">
-                <a target="_blank" class="sharing-link" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
-                  <span aria-hidden="true">FB</span>
-                  <span class="visually-hidden">facebook</span>
-                </a>
-              </li>
-              <li class="twitter">
-                <a target="_blank" class="sharing-link" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
-                  <span aria-hidden="true">TW</span>
-                  <span class="visually-hidden">twitter</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        <!---END-OF-SHARE--->
-        </li>
       </ul>
     </div>
   </div>
+
+  
+</div>
+
+
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
   {%- if product.media.size > 0 -%}
@@ -384,6 +389,23 @@
 
 
   <script>
+ const  customselectOption = document.querySelectorAll(".customOption");
+ 
+  customselectOption.forEach(function(elem) {
+    elem.addEventListener("click", function() {
+     
+      var dataSection = elem.getAttribute('data-secId');
+      var dataoptionVal = elem.getAttribute('data-optionval');
+      var dataindexholder = elem.getAttribute('data-indexholder');
+      var updatedSelect = document.getElementById('Option-' + dataSection + '-' + dataindexholder);
+
+      updatedSelect.value = dataoptionVal;
+      elem.setAttribute("selected", "selected");
+    });
+  });
+
+
+
     function checkProductImg(media,mynum){
   
        let main_product_card = document.getElementById(media);
