@@ -2,6 +2,19 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "blocks": {
+        "f8b0f936-36d3-4a21-9d30-0580d7c831a8": {
+          "type": "text",
+          "settings": {
+            "icons": "icon-1309-coconut",
+            "header": "Lorem",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut consequat semper viverra nam libero justo laoreet sit amet. Dui faucibus in ornare quam viverra orci sagittis eu. Convallis aenean et tortor at risus viverra adipiscing at in. In massa tempor nec feugiat nisl pretium fusce. Aliquam etiam erat velit scelerisque in dictum non. In pellentesque massa placerat duis ultricies lacus. Et tortor consequat id porta nibh venenatis. Sed id semper risus in. Tincidunt arcu non sodales neque sodales ut. Lobortis feugiat vivamus at augue. Semper eget duis at tellus at urna condimentum mattis pellentesque.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f8b0f936-36d3-4a21-9d30-0580d7c831a8"
+      ],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
