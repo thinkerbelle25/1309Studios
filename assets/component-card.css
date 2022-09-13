@@ -363,4 +363,9 @@ padding-inline-start: 0;}
   .card__information{padding-top: 5px;}
   .card__heading{line-height: 13px;}
   .card-information span{line-height: 10px;}
+  .card__heading a{    font-size: 1.6rem;}
+  .price__regular{text-align: left !important;}
+  .card-information > *:not(.visually-hidden:first-child) + *:not(.rating){
+    margin-top: 0.2rem;
+  }
 }

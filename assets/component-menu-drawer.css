@@ -258,6 +258,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 .item_close_drawer svg{width: 16px;}
 .item_close_drawer{text-align: right;}
 @media only screen and (max-width: 989px){
+  li.menu_shop_mbl span, li.mbl_header_fltr, li.mbl_header_srt{font-size: 25px;}
   .header--has-menu_onproduct{background: var(--gradient-base-background-2);}
   .mblmenu {
     list-style: none;

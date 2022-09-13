@@ -92,6 +92,11 @@ a.ftrd-coll-product:hover .featured-col-product-content{
 }
 .mobile-fp-details{display: none;}
 @media only screen and (max-width: 625px){
+  a.ftrd-coll-product:hover .featured-col-product-content{
+    max-height: 0%;
+    height: 0%;
+    border-top: none;
+  }
   .featuredCollection_productTitle{
     padding: 10px;
   }
