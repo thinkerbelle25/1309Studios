@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-customizable",
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Other Products",
+        "related_tag": "isabella",
+        "number_of_products": "6"
+      }
+    },
+    "product-recommendations2": {
+      "type": "product-recommendations2",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "product-recommendations2"
+  ]
+}
