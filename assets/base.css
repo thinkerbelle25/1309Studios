@@ -902,7 +902,7 @@ summary::-webkit-details-marker {
   margin: 0; padding: 0;
   line-height: calc(var(--font-heading-scale) * 3.85rem);}
   @media only screen and (max-width: 625px){
-    .headings{max-width: 200px;padding-top: 10px;}
+    .headings{max-width: 210px;padding-top: 10px;}
   }
 .title,
 .title-wrapper-with-link {
@@ -3115,3 +3115,4 @@ details-disclosure > details {
   align-self: flex-end;
   line-height: 18px;
 }
+.customer .field input{border: 1px solid var(--gradient-base-accent-1) !important;}
