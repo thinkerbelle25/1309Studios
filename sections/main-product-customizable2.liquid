@@ -147,35 +147,6 @@
             </div>
           {%- endif -%}
           <div {{ block.shopify_attributes }}>
-         <div>
-            <div class="product-form__input">
-                <p class="cart-attribute__field select">
-                    <label data-option="Length (in inches)">Length (in inches)</label><select class="select__select new_select_select" required id="length-in-inches" name="properties[Length (in inches)]">
-                    <option value="" selected>select</option>
-                    <option value="48">48</option>
-                    <option value="49">49</option>
-                    <option value="50">50</option>
-                    <option value="51">51</option>
-                    <option value="52">52</option>
-                    <option value="53">53</option>
-                    <option value="54">54</option>
-                    <option value="55">55</option>
-                    <option value="56">56</option>
-                    <option value="57">57</option>
-                    <option value="58">58</option>
-                    <option value="59">59</option>
-                    <option value="60">60</option>
-                    <option value="61">61</option>
-                    <option value="62">62</option>
-                    <option value="63">63</option>
-                    <option value="64">64</option>
-                    <option value="65">65</option>
-                  </select>
-                  </select>
-               </p>
-            </div>  
-            
-         </div>
         {%- unless product.has_only_default_variant -%}
         {%- if block.settings.picker_type == 'button' -%}
         {%- else -%}
@@ -301,6 +272,32 @@
           </div>
     
           {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+          <div class="product-form__input">
+            <p class="cart-attribute__field select">
+                <label data-option="Length (in inches)">Length (in inches)</label><select class="select__select new_select_select" required id="length-in-inches" name="properties[Length (in inches)]">
+                <option value="" selected>select</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+                <option value="61">61</option>
+                <option value="62">62</option>
+                <option value="63">63</option>
+                <option value="64">64</option>
+                <option value="65">65</option>
+              </select>
+              </select>
+           </p>
+        </div>  
             <input
               type="hidden"
               name="id"
