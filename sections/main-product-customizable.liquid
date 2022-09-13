@@ -148,9 +148,9 @@
           {%- endif -%}
           <div {{ block.shopify_attributes }}>
          <div>
-            <p class="cart-attribute__field custom-products-options">
-                <label>Size</label>
-                <select required class="required" id="size" name="properties[Size]">
+            <div class="product-form__input">
+                <p class="cart-attribute__field select">
+                    <label data-option="Size">Size</label><select class="select__select new_select_select" required id="size" name="properties[Size]" required>
                 <option value="" selected>select</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -160,9 +160,10 @@
                 <option value="XXXL">XXXL</option>
                 </select>
                </p>
-              <p class="cart-attribute__field custom-products-options">
-                <label>Length (in inches)</label>
-                <select required class="required" id="length-in-inches" name="properties[Length (in inches)]">
+            </div>  
+            <div class="product-form__input">
+              <p class="cart-attribute__field select">
+                 <label data-option="Length (in inches)">Length (in inches)</label><select required id="length-in-inches" name="properties[Length (in inches)]" class="select__select new_select_select" required>
                   <option value="" selected>select</option>
                   <option value="48">48</option>
                   <option value="49">49</option>
@@ -184,9 +185,10 @@
                   <option value="65">65</option>
                 </select>
               </p>
-                <p class="line-item-property__field custom-products-options">
-                  <label>SLEEVE LENGTH (FROM CENTER BACK IN INCHES)</label>
-                  <select required class="required" id="sleeve-length-from-center-back-in-inches" name="properties[SLEEVE LENGTH (FROM CENTER BACK IN INCHES)]">
+              </div>
+              <div class="product-form__input">
+                <p class="line-item-property__field select">
+                  <label data-option="Sleeve length">Sleeve length</label><select required class="select__select new_select_select" id="sleeve-length-from-center-back-in-inches" name="properties[SLEEVE LENGTH (FROM CENTER BACK IN INCHES)]">
                     <option value="" selected>select</option>
                     <option value="26">26</option>
                     <option value="27">27</option>
@@ -202,7 +204,9 @@
                     <option value="37">37</option>
                     <option value="38">38</option>
                   </select>
+                  <span style="font-size: 10px !important;margin-top:-7px">(From center back in inches)</span>
                 </p>
+            </div>
          </div>
         {%- unless product.has_only_default_variant -%}
         {%- if block.settings.picker_type == 'button' -%}
@@ -216,9 +220,7 @@
             {%- for option in product.options_with_values -%}
               <div class="product-form__input product-form__input--dropdown">              
                 <div class="select">
-                   {{ option.name }} :
-                  <select
-                    id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                 <label data-option="{{ option.name }}">  {{ option.name }} :</label><select id="Option-{{ section.id }}-{{ forloop.index0 }}"
                     class="select__select new_select_select"
                     name="options[{{ option.name | escape }}]"
                     form="{{ product_form_id }}"
@@ -445,21 +447,16 @@
 
 
   <script>
- const  customselectOption = document.querySelectorAll(".customOption");
+const  customselectOption = document.querySelectorAll(".new_select_select");
  
-  customselectOption.forEach(function(elem) {
-    elem.addEventListener("click", function() {
-     
-      var dataSection = elem.getAttribute('data-secId');
-      var dataoptionVal = elem.getAttribute('data-optionval');
-      var dataindexholder = elem.getAttribute('data-indexholder');
-      var updatedSelect = document.getElementById('Option-' + dataSection + '-' + dataindexholder);
-
-      updatedSelect.value = dataoptionVal;
-      elem.setAttribute("selected", "selected");
-    });
-  });
-
+ customselectOption.forEach(function(elem) {
+   elem.addEventListener("change", function() {
+     var selectedItem = elem.value;
+    var OptioName = elem.previousSibling.getAttribute('data-option');;
+    var optionlabel = elem.previousSibling;
+    optionlabel.innerHTML = OptioName + ": " + selectedItem;
+   });
+ });
 
 
     function checkProductImg(media,mynum){
